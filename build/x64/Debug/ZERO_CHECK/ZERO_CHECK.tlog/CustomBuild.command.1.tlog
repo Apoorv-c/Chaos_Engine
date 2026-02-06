@@ -1,0 +1,10 @@
+^D:\DESKTOP\CHAOS_ENGINE\BUILD\CMAKEFILES\1DEE51B5C69F80A75DD8623DEC1E582B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Desktop/Chaos_Engine -BD:/Desktop/Chaos_Engine/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Desktop/Chaos_Engine/build/Chaos_Engine.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

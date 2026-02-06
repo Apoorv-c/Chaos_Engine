@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"D:/Desktop/Chaos_Engine/build/cmake_install.cmake",
+		"D:/Desktop/Chaos_Engine/build/external/glfw/cmake_install.cmake",
+		"D:/Desktop/Chaos_Engine/build/external/glfw/src/cmake_install.cmake",
+		"D:/Desktop/Chaos_Engine/build/external/glfw/docs/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
