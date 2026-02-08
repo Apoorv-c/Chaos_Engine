@@ -6,3 +6,5 @@ D:\Desktop\Chaos_Engine\src\Core\Log.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Eng
 D:\Desktop\Chaos_Engine\src\Input\Input.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Input.obj
 D:\Desktop\Chaos_Engine\src\Renderer\Renderer.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Renderer.obj
 D:\Desktop\Chaos_Engine\src\Renderer\Shader.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Shader.obj
+D:\Desktop\Chaos_Engine\src\Renderer\Camera.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Camera.obj
+D:\Desktop\Chaos_Engine\src\Scene\Scene.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Scene.obj

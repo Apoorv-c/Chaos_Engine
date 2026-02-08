@@ -25,6 +25,12 @@
     <ClCompile Include="D:\Desktop\Chaos_Engine\src\Renderer\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Desktop\Chaos_Engine\src\Renderer\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Desktop\Chaos_Engine\src\Scene\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Desktop\Chaos_Engine\CMakeLists.txt" />

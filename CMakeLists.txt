@@ -15,6 +15,9 @@ add_executable(Chaos_Engine
     src/Input/Input.cpp
     src/Renderer/Renderer.cpp
     src/Renderer/Shader.cpp
+    src/Renderer/Camera.cpp
+    src/Scene/Scene.cpp
+
 
 )
 add_library(glad external/glad/src/glad.c)
@@ -24,6 +27,7 @@ target_include_directories(glad PUBLIC external/glad/include)
 target_include_directories(Chaos_Engine PRIVATE
     src
     external/glfw/include
+    external/glm
 
 )
 
