@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <glm/glm.hpp>
+#include "Scene/Entity.h"
+#include <vector>
 
 class Scene {
 public:
@@ -10,6 +12,6 @@ public:
     void OnRender();
 
 private:
-    std::vector<glm::mat4> m_Objects;
+    std::vector<Entity> m_Entities;
     float m_Rotation = 0.0f;
 };

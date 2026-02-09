@@ -3,21 +3,28 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 Scene::Scene() {
-    // Create 3 objects
-    m_Objects.push_back(glm::translate(glm::mat4(1.0f), glm::vec3(-0.7f, 0.0f, 0.0f)));
-    m_Objects.push_back(glm::mat4(1.0f));
-    m_Objects.push_back(glm::translate(glm::mat4(1.0f), glm::vec3(0.7f, 0.0f, 0.0f)));
+    Entity left;
+    left.TransformComponent.Position = {-0.7f, 0.0f, 0.0f};
+    m_Entities.push_back(left);
+
+    Entity center;
+    m_Entities.push_back(center);
+
+    Entity right;
+    right.TransformComponent.Position = {0.7f, 0.0f, 0.0f};
+    m_Entities.push_back(right);
 }
+
 
 void Scene::OnUpdate(float deltaTime) {
     m_Rotation += deltaTime;
 
     // Rotate middle object
-    m_Objects[1] = glm::rotate(glm::mat4(1.0f), m_Rotation, glm::vec3(0,0,1));
+    m_Entities[1].TransformComponent.Rotation = m_Rotation;
 }
 
 void Scene::OnRender() {
-    for (auto& transform : m_Objects) {
-        Renderer::DrawTriangle(transform);
+    for (auto& entity : m_Entities) {
+        Renderer::DrawTriangle(entity.TransformComponent.GetMatrix());
     }
 }
