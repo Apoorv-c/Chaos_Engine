@@ -8,4 +8,4 @@ D:\Desktop\Chaos_Engine\src\Renderer\Renderer.cpp;D:\Desktop\Chaos_Engine\build\
 D:\Desktop\Chaos_Engine\src\Renderer\Shader.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Shader.obj
 D:\Desktop\Chaos_Engine\src\Renderer\Camera.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Camera.obj
 D:\Desktop\Chaos_Engine\src\Scene\Scene.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Scene.obj
-D:\Desktop\Chaos_Engine\src\Scene\Entity.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Entity.obj
+D:\Desktop\Chaos_Engine\src\Scene\Components.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Components.obj
