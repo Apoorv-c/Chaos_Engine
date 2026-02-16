@@ -8,3 +8,6 @@ struct TransformComponent {
 
     glm::mat4 GetMatrix() const;
 };
+struct RenderComponent {
+    bool Visible = true;
+};

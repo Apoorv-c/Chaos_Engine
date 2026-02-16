@@ -15,5 +15,6 @@ public:
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;
+    std::vector<RenderComponent> m_Renderables;
     float m_Rotation = 0.0f;
 };
