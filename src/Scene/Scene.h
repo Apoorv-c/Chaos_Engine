@@ -12,6 +12,11 @@ public:
     void OnUpdate(float deltaTime);
     void OnRender();
 
+    Entity CreateEntity();
+
+    TransformComponent& GetTransform(Entity e);
+    RenderComponent& GetRender(Entity e);
+    
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;
