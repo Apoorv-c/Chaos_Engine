@@ -1,6 +1,8 @@
 #include "Scene/Scene.h"
 #include "Renderer/Renderer.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include "Systems/RenderSystem.h"
+
 
 Scene::Scene() {
 
@@ -21,13 +23,9 @@ void Scene::OnUpdate(float deltaTime) {
     GetTransform(1).Rotation = m_Rotation;
 }
 void Scene::OnRender() {
-    for (size_t i = 0; i < m_Entities.size(); i++) {
-        if(!m_Renderables[i].Visible)
-            continue;
-
-        Renderer::DrawTriangle(m_Transforms[i].GetMatrix());
-    }
+    RenderSystem::Render(m_Entities, m_Transforms, m_Renderables);
 }
+
 
 
 Entity Scene::CreateEntity() {

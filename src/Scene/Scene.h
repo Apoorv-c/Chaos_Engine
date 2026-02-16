@@ -3,6 +3,8 @@
 #include <glm/glm.hpp>
 #include "Scene/Entity.h"
 #include "Scene/Components.h"
+#include "Systems/RenderSystem.h"
+
 #include <vector>
 
 class Scene {
@@ -16,7 +18,7 @@ public:
 
     TransformComponent& GetTransform(Entity e);
     RenderComponent& GetRender(Entity e);
-    
+
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;

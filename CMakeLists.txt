@@ -18,6 +18,8 @@ add_executable(Chaos_Engine
     src/Renderer/Camera.cpp
     src/Scene/Scene.cpp
     src/Scene/Components.cpp
+    src/Systems/RenderSystem.cpp
+
 
 
 
