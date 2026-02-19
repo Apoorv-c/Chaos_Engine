@@ -19,6 +19,7 @@ add_executable(Chaos_Engine
     src/Scene/Scene.cpp
     src/Scene/Components.cpp
     src/Systems/RenderSystem.cpp
+    src/Systems/TransformSystem.cpp
 
 
 

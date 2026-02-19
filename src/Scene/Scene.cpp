@@ -17,11 +17,9 @@ Scene::Scene() {
 
 
 void Scene::OnUpdate(float deltaTime) {
-    m_Rotation += deltaTime;
-
-    // Rotate middle object
-    GetTransform(1).Rotation = m_Rotation;
+    TransformSystem::Update(deltaTime, m_Entities, m_Transforms);
 }
+
 void Scene::OnRender() {
     RenderSystem::Render(m_Entities, m_Transforms, m_Renderables);
 }

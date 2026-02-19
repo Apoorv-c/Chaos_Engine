@@ -37,6 +37,9 @@
     <ClCompile Include="D:\Desktop\Chaos_Engine\src\Systems\RenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Desktop\Chaos_Engine\src\Systems\TransformSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Desktop\Chaos_Engine\CMakeLists.txt" />

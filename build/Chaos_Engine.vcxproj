@@ -376,6 +376,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\Desktop\Chaos_Engine\src\Scene\Scene.cpp" />
     <ClCompile Include="D:\Desktop\Chaos_Engine\src\Scene\Components.cpp" />
     <ClCompile Include="D:\Desktop\Chaos_Engine\src\Systems\RenderSystem.cpp" />
+    <ClCompile Include="D:\Desktop\Chaos_Engine\src\Systems\TransformSystem.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

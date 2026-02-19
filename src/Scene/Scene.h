@@ -4,7 +4,7 @@
 #include "Scene/Entity.h"
 #include "Scene/Components.h"
 #include "Systems/RenderSystem.h"
-
+#include "Systems/TransformSystem.h"
 #include <vector>
 
 class Scene {
