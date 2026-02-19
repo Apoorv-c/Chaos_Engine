@@ -17,11 +17,11 @@ Scene::Scene() {
 
 
 void Scene::OnUpdate(float deltaTime) {
-    TransformSystem::Update(deltaTime, m_Entities, m_Transforms);
+    // TransformSystem::Update(deltaTime, m_Entities, m_Transforms);
 }
 
 void Scene::OnRender() {
-    RenderSystem::Render(m_Entities, m_Transforms, m_Renderables);
+    // RenderSystem::Render(m_Entities, m_Transforms, m_Renderables);
 }
 
 

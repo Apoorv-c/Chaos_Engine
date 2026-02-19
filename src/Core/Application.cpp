@@ -7,6 +7,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Scene/Scene.h"
+#include "Systems/SystemManager.h"
+
 
 
 Window* g_MainWindow = nullptr;
@@ -42,10 +44,12 @@ void Application::Run() {
             camPos.x += speed;
         }
         cam->SetPosition(camPos);
-        m_Scene->OnUpdate(Time::DeltaTime());
+        SystemManager::Update(*m_Scene, Time::DeltaTime());
+
         Renderer::BeginFrame();
-        m_Scene->OnRender();
+        SystemManager::Render(*m_Scene);
         Renderer::EndFrame();
+
 
         static float angle = 0.0f;
         angle += Time::DeltaTime();

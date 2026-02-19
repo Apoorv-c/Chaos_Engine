@@ -11,3 +11,4 @@ D:\Desktop\Chaos_Engine\src\Scene\Scene.cpp;D:\Desktop\Chaos_Engine\build\Chaos_
 D:\Desktop\Chaos_Engine\src\Scene\Components.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\Components.obj
 D:\Desktop\Chaos_Engine\src\Systems\RenderSystem.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\RenderSystem.obj
 D:\Desktop\Chaos_Engine\src\Systems\TransformSystem.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\TransformSystem.obj
+D:\Desktop\Chaos_Engine\src\Systems\SystemManager.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\SystemManager.obj
