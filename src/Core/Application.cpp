@@ -8,8 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "Scene/Scene.h"
 #include "Systems/SystemManager.h"
-
-
+#include <cstdlib>
 
 Window* g_MainWindow = nullptr;
 
@@ -28,6 +27,21 @@ Application::Application()
 void Application::Run() {
     while (!m_Window.ShouldClose()) {
         Time::Update();
+        static bool spawnPressed = false;
+
+        if (Input::IsKeyPressed(Key::SPACE)) {
+            if (!spawnPressed) {
+                spawnPressed = true;
+
+                float x = ((rand() % 200) - 100) / 100.0f;
+                float y = ((rand() % 200) - 100) / 100.0f;
+
+                m_Scene->SpawnEntity({x, y, 0.0f});
+            }
+        }
+        else {
+            spawnPressed = false;
+        }
         Camera* cam = Renderer::GetCamera();
         static glm::vec3 camPos = {0.0f, 0.0f, 0.0f};
         float speed = 1.5f * Time::DeltaTime();
@@ -43,6 +57,7 @@ void Application::Run() {
         if(Input::IsKeyPressed(Key::D)) {
             camPos.x += speed;
         }
+        
         cam->SetPosition(camPos);
         SystemManager::Update(*m_Scene, Time::DeltaTime());
 

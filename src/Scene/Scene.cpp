@@ -25,7 +25,6 @@ void Scene::OnRender() {
 }
 
 
-
 Entity Scene::CreateEntity() {
     Entity e = (Entity)m_Entities.size();
     m_Entities.push_back(e);
@@ -35,7 +34,12 @@ Entity Scene::CreateEntity() {
 
     return e;
 }
-
+Entity Scene::SpawnEntity(const glm::vec3& position) {
+    Entity e = CreateEntity();
+    GetTransform(e).Position = position;
+    GetRender(e).Visible = true;
+    return e;
+}
 TransformComponent& Scene::GetTransform(Entity e) {
     return m_Transforms[e];
 }

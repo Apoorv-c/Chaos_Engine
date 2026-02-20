@@ -15,13 +15,13 @@ public:
     void OnRender();
 
     Entity CreateEntity();
-
+    Entity SpawnEntity(const glm::vec3& position);
     TransformComponent& GetTransform(Entity e);
     RenderComponent& GetRender(Entity e);
     const std::vector<Entity>& GetEntities() const { return m_Entities; }
     std::vector<TransformComponent>& GetTransforms() { return m_Transforms; }
     const std::vector<RenderComponent>& GetRenderables() const { return m_Renderables; }
-
+    
 
 private:
     std::vector<Entity> m_Entities;
