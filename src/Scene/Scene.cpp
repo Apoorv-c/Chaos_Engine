@@ -5,7 +5,9 @@
 
 
 Scene::Scene() {
-
+    m_Entities.reserve(10000);
+    m_Transforms.reserve(10000);
+    m_Renderables.reserve(10000);
     Entity left = CreateEntity();
     Entity middle = CreateEntity();
     Entity right = CreateEntity();
