@@ -9,12 +9,23 @@
 #include "Scene/Scene.h"
 #include "Systems/SystemManager.h"
 #include <cstdlib>
+#include <string>
+#include <GLFW/glfw3.h>
+#include "imgui.h"
+#include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_opengl3.h"
+
+
 
 Window* g_MainWindow = nullptr;
 
 Application::Application()
     : m_Window(1280, 720, "Chaos Engine") {
     g_MainWindow = &m_Window;
+    // Create ImGui
+    ImGui::CreateContext();
+    ImGui_ImplGlfw_InitForOpenGL(g_MainWindow->GetNativeWindow(), true);
+    ImGui_ImplOpenGL3_Init("#version 330");
     Log::Init();
     Log::Info("Engine starting...");
     Time::Init();
@@ -27,6 +38,11 @@ Application::Application()
 void Application::Run() {
     while (!m_Window.ShouldClose()) {
         Time::Update();
+        static float timer = 0.0f;
+        static int frames = 0;
+
+        timer += Time::DeltaTime();
+        frames++;
         static bool spawnPressed = false;
 
         if (Input::IsKeyPressed(Key::SPACE)) {
@@ -62,6 +78,9 @@ void Application::Run() {
         SystemManager::Update(*m_Scene, Time::DeltaTime());
 
         Renderer::BeginFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
         SystemManager::Render(*m_Scene);
         Renderer::EndFrame();
 
@@ -131,10 +150,53 @@ void Application::Run() {
         else {
             loadPressed = false;
         }
+        ImGui::Begin("Chaos Engine");
 
+        ImGui::Text("Entities: %d", (int)m_Scene->GetEntities().size());
+        ImGui::Text("FPS: %.1f", 1.0f / Time::DeltaTime());
+
+        if (ImGui::Button("Spawn"))
+        {
+            float x = ((rand() % 200) - 100) / 100.0f;
+            float y = ((rand() % 200) - 100) / 100.0f;
+            m_Scene->SpawnEntity({x, y, 0.0f});
+        }
+
+        if (ImGui::Button("Clear"))
+        {
+            m_Scene->Clear();
+        }
+
+        if (ImGui::Button("Save"))
+        {
+            m_Scene->Save("scene.txt");
+        }
+
+        if (ImGui::Button("Load"))
+        {
+            m_Scene->Load("scene.txt");
+        }
+
+        ImGui::End();
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         Renderer::EndFrame();
+        if (timer >= 1.0f) {
+            float fps = frames / timer;
+            float frameTime = 1000.0f / fps;
 
+            std::string title =
+                "Chaos Engine | FPS: " + std::to_string((int)fps) +
+                " | Frame: " + std::to_string(frameTime) + " ms" +
+                " | Entities: " + std::to_string(m_Scene->GetEntities().size());
+
+            glfwSetWindowTitle(g_MainWindow->GetNativeWindow(), title.c_str());
+
+            frames = 0;
+            timer = 0.0f;
+        }
 
         m_Window.Update();
         if(Input::IsKeyPressed(Key::ESCAPE)) {

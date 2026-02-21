@@ -21,7 +21,12 @@ add_executable(Chaos_Engine
     src/Systems/RenderSystem.cpp
     src/Systems/TransformSystem.cpp
     src/Systems/SystemManager.cpp
-
+    external/imgui/imgui.cpp
+    external/imgui/imgui_draw.cpp
+    external/imgui/imgui_tables.cpp
+    external/imgui/imgui_widgets.cpp
+    external/imgui/backends/imgui_impl_glfw.cpp
+    external/imgui/backends/imgui_impl_opengl3.cpp
 
 
 
@@ -35,6 +40,8 @@ target_include_directories(Chaos_Engine PRIVATE
     src
     external/glfw/include
     external/glm
+    external/imgui
+    external/imgui/backends
 
 )
 

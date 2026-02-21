@@ -12,3 +12,9 @@ D:\Desktop\Chaos_Engine\src\Scene\Components.cpp;D:\Desktop\Chaos_Engine\build\C
 D:\Desktop\Chaos_Engine\src\Systems\RenderSystem.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\RenderSystem.obj
 D:\Desktop\Chaos_Engine\src\Systems\TransformSystem.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\TransformSystem.obj
 D:\Desktop\Chaos_Engine\src\Systems\SystemManager.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\SystemManager.obj
+D:\Desktop\Chaos_Engine\external\imgui\imgui.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui.obj
+D:\Desktop\Chaos_Engine\external\imgui\imgui_draw.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_draw.obj
+D:\Desktop\Chaos_Engine\external\imgui\imgui_tables.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_tables.obj
+D:\Desktop\Chaos_Engine\external\imgui\imgui_widgets.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_widgets.obj
+D:\Desktop\Chaos_Engine\external\imgui\backends\imgui_impl_glfw.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_impl_glfw.obj
+D:\Desktop\Chaos_Engine\external\imgui\backends\imgui_impl_opengl3.cpp;D:\Desktop\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_impl_opengl3.obj
