@@ -6,6 +6,7 @@
 #include "Systems/RenderSystem.h"
 #include "Systems/TransformSystem.h"
 #include <vector>
+#include <queue>
 
 class Scene {
 public:
@@ -21,6 +22,7 @@ public:
     const std::vector<Entity>& GetEntities() const { return m_Entities; }
     std::vector<TransformComponent>& GetTransforms() { return m_Transforms; }
     const std::vector<RenderComponent>& GetRenderables() const { return m_Renderables; }
+    void DestroyEntity(Entity e);
     
 
 private:
@@ -28,5 +30,5 @@ private:
     std::vector<TransformComponent> m_Transforms;
     std::vector<RenderComponent> m_Renderables;
     float m_Rotation = 0.0f;
-    
+    std::queue<Entity> m_FreeEntities;
 };

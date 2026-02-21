@@ -8,5 +8,6 @@ enum class Key{
     Q,
     E,
     ESCAPE,
-    SPACE
+    SPACE,
+    X
 };

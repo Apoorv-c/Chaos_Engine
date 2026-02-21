@@ -92,7 +92,22 @@ void Application::Run() {
             -1.6f * zoom, 1.6f * zoom,
             -0.9f * zoom, 0.9f * zoom
         );
+        static bool destroyPressed = false;
 
+        if (Input::IsKeyPressed(Key::X)) {
+            if (!destroyPressed) {
+                destroyPressed = true;
+
+                const auto& entities = m_Scene->GetEntities();
+                if (!entities.empty()) {
+                    Entity e = entities.back();
+                    m_Scene->DestroyEntity(e);
+                }
+            }
+        }
+        else {
+            destroyPressed = false;
+        }
         
 
 

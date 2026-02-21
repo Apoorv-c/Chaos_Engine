@@ -28,6 +28,13 @@ void Scene::OnRender() {
 
 
 Entity Scene::CreateEntity() {
+
+    if (!m_FreeEntities.empty()) {
+        Entity e = m_FreeEntities.front();
+        m_FreeEntities.pop();
+        return e;
+    }
+
     Entity e = (Entity)m_Entities.size();
     m_Entities.push_back(e);
 
@@ -36,6 +43,7 @@ Entity Scene::CreateEntity() {
 
     return e;
 }
+
 Entity Scene::SpawnEntity(const glm::vec3& position) {
     Entity e = CreateEntity();
     GetTransform(e).Position = position;
@@ -48,4 +56,11 @@ TransformComponent& Scene::GetTransform(Entity e) {
 
 RenderComponent& Scene::GetRender(Entity e) {
     return m_Renderables[e];
+}
+void Scene::DestroyEntity(Entity e) {
+    if (e >= m_Entities.size())
+        return;
+
+    m_Renderables[e].Visible = false;
+    m_FreeEntities.push(e);
 }
