@@ -108,7 +108,29 @@ void Application::Run() {
         else {
             destroyPressed = false;
         }
-        
+        // Save (Key: F5)
+        static bool savePressed = false;
+        if (Input::IsKeyPressed(Key::F5)) {
+            if (!savePressed) {
+                savePressed = true;
+                m_Scene->Save("scene.txt");
+            }
+        }
+        else {
+            savePressed = false;
+        }
+
+        // Load (Key: F9)
+        static bool loadPressed = false;
+        if (Input::IsKeyPressed(Key::F9)) {
+            if (!loadPressed) {
+                loadPressed = true;
+                m_Scene->Load("scene.txt");
+            }
+        }
+        else {
+            loadPressed = false;
+        }
 
 
         Renderer::EndFrame();

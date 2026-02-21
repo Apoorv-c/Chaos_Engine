@@ -7,6 +7,7 @@
 #include "Systems/TransformSystem.h"
 #include <vector>
 #include <queue>
+#include <string>
 
 class Scene {
 public:
@@ -14,7 +15,9 @@ public:
 
     void OnUpdate(float deltaTime);
     void OnRender();
-
+    void Save(const std::string& path);
+    void Load(const std::string& path);
+    void Clear();
     Entity CreateEntity();
     Entity SpawnEntity(const glm::vec3& position);
     TransformComponent& GetTransform(Entity e);

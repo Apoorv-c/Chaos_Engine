@@ -2,7 +2,7 @@
 #include "Renderer/Renderer.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include "Systems/RenderSystem.h"
-
+#include <fstream>
 
 Scene::Scene() {
     m_Entities.reserve(10000);
@@ -15,6 +15,55 @@ Scene::Scene() {
 
     GetTransform(left).Position = {-0.7f, 0.0f, 0.0f};
     GetTransform(right).Position = {0.7f, 0.0f, 0.0f};
+}
+
+void Scene::Clear() {
+    m_Entities.clear();
+    m_Transforms.clear();
+    m_Renderables.clear();
+
+    while (!m_FreeEntities.empty())
+        m_FreeEntities.pop();
+}
+
+void Scene::Save(const std::string& path) {
+    std::ofstream out(path);
+
+    for (size_t i = 0; i < m_Entities.size(); i++) {
+        if (!m_Renderables[i].Visible)
+            continue;
+
+        auto& t = m_Transforms[i];
+
+        out << t.Position.x << " "
+            << t.Position.y << " "
+            << t.Rotation << " "
+            << t.Scale.x << " "
+            << t.Scale.y << "\n";
+    }
+
+    out.close();
+}
+
+void Scene::Load(const std::string& path) {
+    Clear();
+
+    std::ifstream in(path);
+
+    float px, py, rot, sx, sy;
+
+    while (in >> px >> py >> rot >> sx >> sy) {
+        Entity e = CreateEntity();
+
+        auto& t = GetTransform(e);
+        t.Position = {px, py, 0.0f};
+        t.Rotation = rot;
+        t.Scale = {sx, sy, 1.0f};
+
+        GetRender(e).Visible = true;
+    }
+
+    in.close();
 }
 
 
