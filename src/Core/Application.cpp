@@ -36,6 +36,7 @@ Application::Application()
 }
 
 void Application::Run() {
+    static int selectedEntity = -1;
     while (!m_Window.ShouldClose()) {
         Time::Update();
         static float timer = 0.0f;
@@ -175,6 +176,40 @@ void Application::Run() {
         if (ImGui::Button("Load"))
         {
             m_Scene->Load("scene.txt");
+        }
+
+        ImGui::Separator();
+        ImGui::Text("Entities");
+
+        const auto& entities = m_Scene->GetEntities();
+
+        for (int i = 0; i < (int)entities.size(); i++)
+        {
+            if (!m_Scene->GetRender(i).Visible)
+                continue;
+
+            std::string label = "Entity " + std::to_string(i);
+
+            if (ImGui::Selectable(label.c_str(), selectedEntity == i))
+            {
+                selectedEntity = i;
+            }
+        }
+        
+        if (selectedEntity >= 0 && selectedEntity < (int)entities.size())
+        {
+            auto& transform = m_Scene->GetTransform(selectedEntity);
+
+            ImGui::Separator();
+            ImGui::Text("Transform");
+
+            ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
+            ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
+
+            if (ImGui::Button("Delete Entity")){
+                m_Scene->DestroyEntity(selectedEntity);
+                selectedEntity = -1;
+            }
         }
 
         ImGui::End();
