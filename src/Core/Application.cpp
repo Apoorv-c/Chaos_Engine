@@ -14,7 +14,7 @@
 #include "imgui.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
-
+#include <glad/glad.h>
 
 
 Window* g_MainWindow = nullptr;
@@ -180,7 +180,10 @@ void Application::Run() {
 
         ImGui::Separator();
         ImGui::Text("Entities");
-
+        if (ImGui::Button("Delete Entity")){
+            m_Scene->DestroyEntity(selectedEntity);
+            selectedEntity = -1;
+        }
         const auto& entities = m_Scene->GetEntities();
 
         for (int i = 0; i < (int)entities.size(); i++)
@@ -195,21 +198,50 @@ void Application::Run() {
                 selectedEntity = i;
             }
         }
-        
+        ImGui::Separator();
+        ImGui::Text("Camera");
+
+        auto* camera = Renderer::GetCamera();
+
+        // static glm::vec3 camPos = {0.0f, 0.0f, 0.0f};
+        ImGui::DragFloat2("Cam Position", &camPos.x, 0.05f);
+        camera->SetPosition(camPos);
+
+        // static float zoom = 1.0f;
+        ImGui::DragFloat("Zoom", &zoom, 0.01f, 0.2f, 5.0f);
+        camera->SetProjection(
+            -1.6f * zoom, 1.6f * zoom,
+            -0.9f * zoom, 0.9f * zoom
+        );
+
+        ImGui::Separator();
+        ImGui::Text("Rendering");
+
+        static bool wireframe = false;
+        if (ImGui::Checkbox("Wireframe", &wireframe))
+        {
+            if (wireframe)
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            else
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
+        static bool vsync = true;
+        if (ImGui::Checkbox("VSync", &vsync))
+        {
+            glfwSwapInterval(vsync ? 1 : 0);
+        }
         if (selectedEntity >= 0 && selectedEntity < (int)entities.size())
         {
             auto& transform = m_Scene->GetTransform(selectedEntity);
 
             ImGui::Separator();
             ImGui::Text("Transform");
+            
 
             ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
             ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
 
-            if (ImGui::Button("Delete Entity")){
-                m_Scene->DestroyEntity(selectedEntity);
-                selectedEntity = -1;
-            }
+            
         }
 
         ImGui::End();
