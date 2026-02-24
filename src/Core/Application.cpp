@@ -89,17 +89,6 @@ void Application::Run() {
         static float angle = 0.0f;
         angle += Time::DeltaTime();
 
-        glm::mat4 t1 = glm::mat4(1.0f);
-        t1 = glm::rotate(t1, angle, glm::vec3(0, 0, 1));
-
-        Renderer::DrawTriangle(t1);
-
-        glm::mat4 t2 = glm::translate(glm::mat4(1.0f), glm::vec3(-0.7f, 0.0f, 0.0f));
-        Renderer::DrawTriangle(t2);
-
-        glm::mat4 t3 = glm::translate(glm::mat4(1.0f), glm::vec3(0.7f, 0.0f, 0.0f));
-        Renderer::DrawTriangle(t3);
-
         static float zoom = 1.0f;
 
         if (Input::IsKeyPressed(Key::Q))
@@ -151,39 +140,14 @@ void Application::Run() {
         else {
             loadPressed = false;
         }
-        ImGui::Begin("Chaos Engine");
 
-        ImGui::Text("Entities: %d", (int)m_Scene->GetEntities().size());
-        ImGui::Text("FPS: %.1f", 1.0f / Time::DeltaTime());
+        // IMGUI WINDOW SPLITTING(HEIRARCHY , INSPECTOR , ENGINE)
 
-        if (ImGui::Button("Spawn"))
-        {
-            float x = ((rand() % 200) - 100) / 100.0f;
-            float y = ((rand() % 200) - 100) / 100.0f;
-            m_Scene->SpawnEntity({x, y, 0.0f});
-        }
+        ImGui::Begin("Hierarchy");
 
-        if (ImGui::Button("Clear"))
-        {
-            m_Scene->Clear();
-        }
-
-        if (ImGui::Button("Save"))
-        {
-            m_Scene->Save("scene.txt");
-        }
-
-        if (ImGui::Button("Load"))
-        {
-            m_Scene->Load("scene.txt");
-        }
-
-        ImGui::Separator();
         ImGui::Text("Entities");
-        if (ImGui::Button("Delete Entity")){
-            m_Scene->DestroyEntity(selectedEntity);
-            selectedEntity = -1;
-        }
+        ImGui::Separator();
+
         const auto& entities = m_Scene->GetEntities();
 
         for (int i = 0; i < (int)entities.size(); i++)
@@ -194,29 +158,69 @@ void Application::Run() {
             std::string label = "Entity " + std::to_string(i);
 
             if (ImGui::Selectable(label.c_str(), selectedEntity == i))
-            {
                 selectedEntity = i;
+        }
+
+        ImGui::End();
+
+        ImGui::Begin("Inspector");
+
+        if (selectedEntity >= 0 && selectedEntity < (int)m_Scene->GetEntities().size())
+        {
+            auto& transform = m_Scene->GetTransform(selectedEntity);
+
+            ImGui::Text("Transform");
+            ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
+            ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
+
+            ImGui::Separator();
+
+            if (ImGui::Button("Delete"))
+            {
+                m_Scene->DestroyEntity(selectedEntity);
+                selectedEntity = -1;
             }
         }
+
+        ImGui::End();
+
+        ImGui::Begin("Engine");
+
+        ImGui::Text("FPS: %.1f", 1.0f / Time::DeltaTime());
+        ImGui::Text("Entities: %d", (int)m_Scene->GetEntities().size());
+
+        ImGui::Separator();
+
+        // Spawn
+        if (ImGui::Button("Spawn"))
+        {
+            float x = ((rand() % 200) - 100) / 100.0f;
+            float y = ((rand() % 200) - 100) / 100.0f;
+            m_Scene->SpawnEntity({x, y, 0.0f});
+        }
+
+        // Save / Load
+        if (ImGui::Button("Save"))
+            m_Scene->Save("scene.txt");
+
+        if (ImGui::Button("Load"))
+            m_Scene->Load("scene.txt");
+
+        // Camera controls
         ImGui::Separator();
         ImGui::Text("Camera");
 
         auto* camera = Renderer::GetCamera();
-
-        // static glm::vec3 camPos = {0.0f, 0.0f, 0.0f};
-        ImGui::DragFloat2("Cam Position", &camPos.x, 0.05f);
+        ImGui::DragFloat2("Cam Pos", &camPos.x, 0.05f);
         camera->SetPosition(camPos);
 
-        // static float zoom = 1.0f;
         ImGui::DragFloat("Zoom", &zoom, 0.01f, 0.2f, 5.0f);
         camera->SetProjection(
             -1.6f * zoom, 1.6f * zoom,
             -0.9f * zoom, 0.9f * zoom
         );
 
-        ImGui::Separator();
-        ImGui::Text("Rendering");
-
+        // Wireframe
         static bool wireframe = false;
         if (ImGui::Checkbox("Wireframe", &wireframe))
         {
@@ -225,24 +229,11 @@ void Application::Run() {
             else
                 glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         }
+
+        // VSync
         static bool vsync = true;
         if (ImGui::Checkbox("VSync", &vsync))
-        {
             glfwSwapInterval(vsync ? 1 : 0);
-        }
-        if (selectedEntity >= 0 && selectedEntity < (int)entities.size())
-        {
-            auto& transform = m_Scene->GetTransform(selectedEntity);
-
-            ImGui::Separator();
-            ImGui::Text("Transform");
-            
-
-            ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
-            ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
-
-            
-        }
 
         ImGui::End();
 
