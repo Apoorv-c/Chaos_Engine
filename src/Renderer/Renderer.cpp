@@ -6,13 +6,17 @@
 #include "Core/Time.h"
 #include "Renderer/Camera.h"
 #include "Input/Input.h"
-#include "Renderer/Camera.h"
+#include <GLFW/glfw3.h>
 
 
 
 static unsigned int VAO = 0;
 static Shader* s_Shader = nullptr;
 static Camera* s_Camera = nullptr;
+static unsigned int s_FBO = 0;
+static unsigned int s_ColorTexture = 0;
+static int s_FBWidth = 1280;
+static int s_FBHeight = 720;
 
 void Renderer::Init() {
     glEnable(GL_BLEND);
@@ -64,9 +68,12 @@ void Renderer::Shutdown() {
 }
 
 void Renderer::BeginFrame() {
+    // Clear the default framebuffer so no stale geometry leaks through the dock.
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+}
 
+void Renderer::PrepareShader() {
     s_Shader->Bind();
     s_Shader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
 }
@@ -78,6 +85,72 @@ void Renderer::DrawTriangle(const glm::mat4& transform) {
 Camera* Renderer::GetCamera() {
     return s_Camera;
 }
+
+void Renderer::InitFramebuffer(int width, int height)
+{
+    s_FBWidth = width;
+    s_FBHeight = height;
+
+    // Generate FBO first, then bind and configure it.
+    glGenFramebuffers(1, &s_FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, s_FBO);
+
+    glGenTextures(1, &s_ColorTexture);
+    glBindTexture(GL_TEXTURE_2D, s_ColorTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, s_ColorTexture, 0);
+
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+    {
+        printf("Framebuffer NOT complete!\n");
+    }
+
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void Renderer::ResizeFramebuffer(int width, int height)
+{
+    if (width == 0 || height == 0) return;
+    if (width == s_FBWidth && height == s_FBHeight) return; // No change needed.
+
+    s_FBWidth = width;
+    s_FBHeight = height;
+
+    // Resize the texture.
+    glBindTexture(GL_TEXTURE_2D, s_ColorTexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    // Re-attach the resized texture to the FBO so the attachment stays valid.
+    glBindFramebuffer(GL_FRAMEBUFFER, s_FBO);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, s_ColorTexture, 0);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void Renderer::BindFramebuffer()
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, s_FBO);
+    glViewport(0, 0, s_FBWidth, s_FBHeight);
+}
+
+void Renderer::UnbindFramebuffer()
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    // Restore viewport to the full window so ImGui renders correctly.
+    GLFWwindow* win = glfwGetCurrentContext();
+    int w, h;
+    glfwGetFramebufferSize(win, &w, &h);
+    glViewport(0, 0, w, h);
+}
+
+unsigned int Renderer::GetFramebufferTexture()
+{
+    return s_ColorTexture;
+}
+
 
 void Renderer::EndFrame() {
     // Nothing yet (swap handled by Window)

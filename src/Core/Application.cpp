@@ -12,6 +12,7 @@
 #include <string>
 #include <GLFW/glfw3.h>
 #include "imgui.h"
+#include "imconfig.h"
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 #include <glad/glad.h>
@@ -24,6 +25,8 @@ Application::Application()
     g_MainWindow = &m_Window;
     // Create ImGui
     ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImGui_ImplGlfw_InitForOpenGL(g_MainWindow->GetNativeWindow(), true);
     ImGui_ImplOpenGL3_Init("#version 330");
     Log::Init();
@@ -33,6 +36,8 @@ Application::Application()
     m_Scene = new Scene();
 
     Renderer::Init();
+
+    Renderer::InitFramebuffer(1280, 720);
 }
 
 void Application::Run() {
@@ -79,12 +84,40 @@ void Application::Run() {
         SystemManager::Update(*m_Scene, Time::DeltaTime());
 
         Renderer::BeginFrame();
+        
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-        SystemManager::Render(*m_Scene);
-        Renderer::EndFrame();
+        ImGuiID dockspace_id = ImGui::GetID("MainDockSpace");
+        ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
+        ImGui::Begin("Scene");
 
+        ImVec2 size = ImGui::GetContentRegionAvail();
+
+        // Resize framebuffer to panel size
+        Renderer::ResizeFramebuffer((int)size.x, (int)size.y);
+
+        // Render scene into framebuffer
+        Renderer::BindFramebuffer();
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // Bind shader + upload camera matrix now that we are inside the FBO.
+        Renderer::PrepareShader();
+
+        SystemManager::Render(*m_Scene);
+
+        Renderer::UnbindFramebuffer();
+
+        // Show texture in ImGui
+        ImGui::Image(
+            (void*)(intptr_t)Renderer::GetFramebufferTexture(),
+            size,
+            ImVec2(0, 1),
+            ImVec2(1, 0)
+        );
+
+        ImGui::End();
 
         static float angle = 0.0f;
         angle += Time::DeltaTime();
@@ -102,6 +135,19 @@ void Application::Run() {
             -0.9f * zoom, 0.9f * zoom
         );
         static bool destroyPressed = false;
+
+        if(ImGui::BeginMainMenuBar()){
+            if(ImGui::BeginMenu("File")){
+                if(ImGui::MenuItem("Save"))
+                    m_Scene->Save("scene.txt");
+                if(ImGui::MenuItem("Load"))
+                    m_Scene->Load("scene.txt");
+                if (ImGui::MenuItem("Exit"))
+                    glfwSetWindowShouldClose(g_MainWindow->GetNativeWindow(), true);
+                ImGui::EndMenu();
+            }
+            ImGui::EndMainMenuBar();
+        }
 
         if (Input::IsKeyPressed(Key::X)) {
             if (!destroyPressed) {
