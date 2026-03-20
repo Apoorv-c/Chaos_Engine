@@ -23,6 +23,7 @@ public:
     static void InitPickingFramebuffer(int width, int height);
     static void BindPickingFramebuffer();
     static int ReadEntityID(int mouseX, int mouseY);
+    static void DrawGrid();
 };
 
 

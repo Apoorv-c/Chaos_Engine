@@ -109,6 +109,9 @@ void Application::Run() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         Renderer::PrepareShader();
+        Renderer::DrawGrid();
+        // Grid uses its own shader; restore the entity shader before drawing entities.
+        Renderer::PrepareShader();
         SystemManager::Render(*m_Scene);
 
         Renderer::UnbindFramebuffer();

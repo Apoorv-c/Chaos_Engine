@@ -7,6 +7,7 @@
 #include "Renderer/Camera.h"
 #include "Input/Input.h"
 #include <GLFW/glfw3.h>
+#include <cmath>
 
 
 
@@ -20,6 +21,53 @@ static int s_FBWidth = 1280;
 static int s_FBHeight = 720;
 static unsigned int s_PickingFBO = 0;
 static unsigned int s_PickingTexture = 0;
+static unsigned int gridVAO = 0;
+static unsigned int gridVBO = 0;
+static std::vector<float> grid;
+static unsigned int gridShader = 0;
+
+static unsigned int CompileGridShader(const char* vertexSrc, const char* fragmentSrc) {
+    unsigned int program = glCreateProgram();
+    unsigned int vert = glCreateShader(GL_VERTEX_SHADER);
+    unsigned int frag = glCreateShader(GL_FRAGMENT_SHADER);
+
+    glShaderSource(vert, 1, &vertexSrc, nullptr);
+    glCompileShader(vert);
+
+    int success = 0;
+    glGetShaderiv(vert, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char info[1024];
+        glGetShaderInfoLog(vert, 1024, nullptr, info);
+        printf("Grid vertex shader compile failed: %s\n", info);
+    }
+
+    glShaderSource(frag, 1, &fragmentSrc, nullptr);
+    glCompileShader(frag);
+
+    glGetShaderiv(frag, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        char info[1024];
+        glGetShaderInfoLog(frag, 1024, nullptr, info);
+        printf("Grid fragment shader compile failed: %s\n", info);
+    }
+
+    glAttachShader(program, vert);
+    glAttachShader(program, frag);
+    glLinkProgram(program);
+
+    glGetProgramiv(program, GL_LINK_STATUS, &success);
+    if (!success) {
+        char info[1024];
+        glGetProgramInfoLog(program, 1024, nullptr, info);
+        printf("Grid shader link failed: %s\n", info);
+    }
+
+    glDeleteShader(vert);
+    glDeleteShader(frag);
+
+    return program;
+}
 
 
 void Renderer::Init() {
@@ -42,7 +90,6 @@ void Renderer::Init() {
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-
     const char* vs = R"(
         #version 330 core
         layout(location = 0) in vec2 aPos;
@@ -85,6 +132,105 @@ void Renderer::Init() {
 
     s_Camera = new Camera(-1.6f, 1.6f, -0.9f, 0.9f);
 
+    // --------------------
+    // Unity-like grid (light grey)
+    // --------------------
+    // Vertex format: vec2 position + vec4 color (6 floats per vertex).
+    const char* gridVS = R"(
+        #version 330 core
+        layout(location = 0) in vec2 aPos;
+        layout(location = 1) in vec4 aColor;
+        uniform mat4 u_ViewProjection;
+        out vec4 vColor;
+        void main() {
+            gl_Position = u_ViewProjection * vec4(aPos, 0.0, 1.0);
+            vColor = aColor;
+        }
+    )";
+
+    const char* gridFS = R"(
+        #version 330 core
+        in vec4 vColor;
+        out vec4 FragColor;
+        void main() {
+            FragColor = vColor;
+        }
+    )";
+
+    gridShader = CompileGridShader(gridVS, gridFS);
+
+    grid.clear();
+
+    // Grid spans a fixed world-size; camera pan/zoom moves it via u_ViewProjection.
+    const float halfSize = 20.0f;
+    const float majorStep = 1.0f;    // darker lines every 1 unit
+    const float minorStep = 0.25f;   // lighter lines every 0.25 unit
+    const int majorDiv = (int)(majorStep / minorStep); // expected 4
+
+    const glm::vec4 minorColor(0.80f, 0.80f, 0.80f, 0.45f);
+    const glm::vec4 majorColor(0.62f, 0.62f, 0.62f, 0.65f);
+    const glm::vec4 axisColor(0.52f, 0.52f, 0.52f, 0.85f);
+
+    const int minorCount = (int)round(halfSize / minorStep);
+
+    auto pushVertex = [&](float x, float y, const glm::vec4& c) {
+        grid.push_back(x);
+        grid.push_back(y);
+        grid.push_back(c.r);
+        grid.push_back(c.g);
+        grid.push_back(c.b);
+        grid.push_back(c.a);
+    };
+
+    // Vertical lines (X constant)
+    for (int i = -minorCount; i <= minorCount; i++) {
+        float x = i * minorStep;
+        glm::vec4 c =
+            (i == 0) ? axisColor : ((i % majorDiv) == 0 ? majorColor : minorColor);
+        pushVertex(x, -halfSize, c);
+        pushVertex(x,  halfSize, c);
+    }
+
+    // Horizontal lines (Y constant)
+    for (int i = -minorCount; i <= minorCount; i++) {
+        float y = i * minorStep;
+        glm::vec4 c =
+            (i == 0) ? axisColor : ((i % majorDiv) == 0 ? majorColor : minorColor);
+        pushVertex(-halfSize, y, c);
+        pushVertex( halfSize, y, c);
+    }
+
+    glGenVertexArrays(1, &gridVAO);
+    glGenBuffers(1, &gridVBO);
+    glBindVertexArray(gridVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, gridVBO);
+    glBufferData(GL_ARRAY_BUFFER, grid.size() * sizeof(float), grid.data(), GL_STATIC_DRAW);
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+}
+void Renderer::DrawGrid()
+{
+    if (gridShader == 0 || grid.empty())
+        return;
+
+    glUseProgram(gridShader);
+
+    glm::mat4 vp = s_Camera->GetViewProjection();
+    glUniformMatrix4fv(
+        glGetUniformLocation(gridShader, "u_ViewProjection"),
+        1,
+        GL_FALSE,
+        &vp[0][0]
+    );
+
+    glBindVertexArray(gridVAO);
+    const int vertexCount = (int)(grid.size() / 6); // 6 floats per vertex
+    glDrawArrays(GL_LINES, 0, vertexCount);
 }
 
 
