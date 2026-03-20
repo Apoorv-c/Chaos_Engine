@@ -27,8 +27,8 @@ C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows-MSVC.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/Windows.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/Platform/WindowsPaths.cmake
-D:/Desktop/Chaos_Engine/CMakeLists.txt
-D:/Desktop/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeCCompiler.cmake
-D:/Desktop/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeCXXCompiler.cmake
-D:/Desktop/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeRCCompiler.cmake
-D:/Desktop/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeSystem.cmake
+D:/Chaos_Engine/CMakeLists.txt
+D:/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeCCompiler.cmake
+D:/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeCXXCompiler.cmake
+D:/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeRCCompiler.cmake
+D:/Chaos_Engine/build/CMakeFiles/4.2.3/CMakeSystem.cmake

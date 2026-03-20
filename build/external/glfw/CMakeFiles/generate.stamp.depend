@@ -11,6 +11,6 @@ C:/Program Files/CMake/share/cmake-4.2/Modules/FindThreads.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/GNUInstallDirs.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/Internal/CheckSourceCompiles.cmake
 C:/Program Files/CMake/share/cmake-4.2/Modules/WriteBasicConfigVersionFile.cmake
-D:/Desktop/Chaos_Engine/external/glfw/CMake/cmake_uninstall.cmake.in
-D:/Desktop/Chaos_Engine/external/glfw/CMake/glfw3Config.cmake.in
-D:/Desktop/Chaos_Engine/external/glfw/CMakeLists.txt
+D:/Chaos_Engine/external/glfw/CMake/cmake_uninstall.cmake.in
+D:/Chaos_Engine/external/glfw/CMake/glfw3Config.cmake.in
+D:/Chaos_Engine/external/glfw/CMakeLists.txt

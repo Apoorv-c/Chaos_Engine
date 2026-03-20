@@ -7,6 +7,8 @@ public:
 
     void SetPosition(const glm::vec3& position);
     void SetProjection(float left, float right, float bottom, float top);
+    const glm::mat4& GetView() const;
+    const glm::mat4& GetProjection() const;
     const glm::mat4& GetViewProjection() const;
 
 private:

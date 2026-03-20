@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>D:\Desktop\Chaos_Engine\build\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>D:\Chaos_Engine\build\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>D:\Desktop\Chaos_Engine\build\Debug\Chaos_Engine.exe</FullPath>
+      <FullPath>D:\Chaos_Engine\build\Debug\Chaos_Engine.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

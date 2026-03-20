@@ -52,6 +52,11 @@ void Shader::SetMat4(const std::string& name, const glm::mat4& matrix) {
     glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 }
 
+void Shader::SetInt(const std::string& name, int value) {
+    int location = glGetUniformLocation(m_RendererID, name.c_str());
+    glUniform1i(location, value);
+}
+
 void Shader::Bind() const {
     glUseProgram(m_RendererID);
 }

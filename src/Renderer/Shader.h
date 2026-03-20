@@ -10,6 +10,7 @@ public:
     void Bind() const;
     void Unbind() const;
     void SetMat4(const std::string& name, const glm::mat4& matrix);
+    void SetInt(const std::string& name, int value);
 
 private:
     unsigned int m_RendererID;

@@ -19,6 +19,14 @@ const glm::mat4& Camera::GetViewProjection() const {
     return m_ViewProjection;
 }
 
+const glm::mat4& Camera::GetView() const {
+    return m_View;
+}
+
+const glm::mat4& Camera::GetProjection() const {
+    return m_Projection;
+}
+
 void Camera::Recalculate() {
     glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position);
     m_View = glm::inverse(transform);

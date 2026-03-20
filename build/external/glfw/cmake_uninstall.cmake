@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "D:/Desktop/Chaos_Engine/build/external/glfw/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"D:/Desktop/Chaos_Engine/build/external/glfw/install_manifest.txt\"")
+if (NOT EXISTS "D:/Chaos_Engine/build/external/glfw/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"D:/Chaos_Engine/build/external/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "D:/Desktop/Chaos_Engine/build/external/glfw/install_manifest.txt" files)
+file(READ "D:/Chaos_Engine/build/external/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

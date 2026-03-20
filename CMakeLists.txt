@@ -27,6 +27,7 @@ add_executable(Chaos_Engine
     external/imgui/imgui_widgets.cpp
     external/imgui/backends/imgui_impl_glfw.cpp
     external/imgui/backends/imgui_impl_opengl3.cpp
+    external/imguizmo/ImGuizmo.cpp
 
 
 
@@ -42,7 +43,7 @@ target_include_directories(Chaos_Engine PRIVATE
     external/glm
     external/imgui
     external/imgui/backends
-
+    external/imguizmo
 )
 
 target_link_libraries(Chaos_Engine glfw glad)

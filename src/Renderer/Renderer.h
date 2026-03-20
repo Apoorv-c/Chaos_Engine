@@ -12,13 +12,17 @@ public:
     static void BeginFrame();
     static void EndFrame();
     static void PrepareShader();
-
+    static void SetEntityID(int id);
+    static void PreparePickingShader();
     static void DrawTriangle(const glm::mat4& transform);
     static void InitFramebuffer(int width, int height);
     static void ResizeFramebuffer(int width, int height);
     static unsigned int GetFramebufferTexture();
     static void BindFramebuffer();
     static void UnbindFramebuffer();
+    static void InitPickingFramebuffer(int width, int height);
+    static void BindPickingFramebuffer();
+    static int ReadEntityID(int mouseX, int mouseY);
 };
 
 

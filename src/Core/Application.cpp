@@ -6,6 +6,7 @@
 #include "Renderer/Camera.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "Scene/Scene.h"
 #include "Systems/SystemManager.h"
 #include <cstdlib>
@@ -16,6 +17,7 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 #include <glad/glad.h>
+#include "ImGuizmo.h"
 
 
 Window* g_MainWindow = nullptr;
@@ -36,7 +38,7 @@ Application::Application()
     m_Scene = new Scene();
 
     Renderer::Init();
-
+    Renderer::InitPickingFramebuffer(1280, 720);
     Renderer::InitFramebuffer(1280, 720);
 }
 
@@ -90,6 +92,7 @@ void Application::Run() {
         ImGui::NewFrame();
         ImGuiID dockspace_id = ImGui::GetID("MainDockSpace");
         ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
+        
         ImGui::Begin("Scene");
 
         ImVec2 size = ImGui::GetContentRegionAvail();
@@ -97,25 +100,147 @@ void Application::Run() {
         // Resize framebuffer to panel size
         Renderer::ResizeFramebuffer((int)size.x, (int)size.y);
 
-        // Render scene into framebuffer
+        // --------------------
+        // RENDER SCENE TO FBO
+        // --------------------
         Renderer::BindFramebuffer();
+
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        // Bind shader + upload camera matrix now that we are inside the FBO.
         Renderer::PrepareShader();
-
         SystemManager::Render(*m_Scene);
 
         Renderer::UnbindFramebuffer();
 
-        // Show texture in ImGui
+        // --------------------
+        // SHOW SCENE TEXTURE
+        // --------------------
         ImGui::Image(
             (void*)(intptr_t)Renderer::GetFramebufferTexture(),
             size,
-            ImVec2(0, 1),
-            ImVec2(1, 0)
+            ImVec2(0,1),
+            ImVec2(1,0)
         );
+
+        // --------------------
+        // GIZMO SETUP
+        // --------------------
+        ImGuizmo::SetOrthographic(true);
+        ImGuizmo::BeginFrame();
+
+        // Scene viewport position
+        ImVec2 imagePos  = ImGui::GetItemRectMin();
+        ImVec2 imageSize = ImGui::GetItemRectSize();
+
+        ImGuizmo::SetRect(
+            imagePos.x,
+            imagePos.y,
+            imageSize.x,
+            imageSize.y
+        );
+
+        // --------------------
+        // DRAW GIZMO
+        // --------------------
+        // --------------------
+        // DRAW GIZMO
+        // --------------------
+        if (selectedEntity >= 0)
+        {
+            auto& transform = m_Scene->GetTransform(selectedEntity);
+
+            glm::mat4 transformMatrix = transform.GetMatrix();
+
+            Camera* cam = Renderer::GetCamera();
+
+            // Draw gizmo on the default ImGui drawlist
+            ImGuizmo::SetDrawlist();
+
+            // Use scene viewport rectangle
+            ImVec2 imagePos  = ImGui::GetItemRectMin();
+            ImVec2 imageSize = ImGui::GetItemRectSize();
+
+            ImGuizmo::SetRect(
+                imagePos.x,
+                imagePos.y,
+                imageSize.x,
+                imageSize.y
+            );
+
+            // Build view matrix from camera position
+            glm::mat4 view = glm::translate(glm::mat4(1.0f), -camPos);
+            glm::mat4 projection = cam->GetProjection();
+
+            ImGuizmo::Manipulate(
+                glm::value_ptr(view),
+                glm::value_ptr(projection),
+                ImGuizmo::TRANSLATE,
+                ImGuizmo::LOCAL,
+                glm::value_ptr(transformMatrix)
+            );
+
+            if (ImGuizmo::IsUsing())
+            {
+                glm::vec3 translation, rotation, scale;
+
+                ImGuizmo::DecomposeMatrixToComponents(
+                    glm::value_ptr(transformMatrix),
+                    &translation.x,
+                    &rotation.x,
+                    &scale.x
+                );
+
+                transform.Position = translation;
+            }
+        }
+        // --------------------
+        // PICKING PASS
+        // --------------------
+        Renderer::BindPickingFramebuffer();
+
+        glViewport(0,0,(int)size.x,(int)size.y);
+
+        GLint clearVal = -1;
+        glClearBufferiv(GL_COLOR,0,&clearVal);
+
+        Renderer::PreparePickingShader();
+
+        const auto& pickEntities = m_Scene->GetEntities();
+        const auto& pickRenderables = m_Scene->GetRenderables();
+
+        for (int i=0;i<(int)pickEntities.size();i++)
+        {
+            if(!pickRenderables[i].Visible) continue;
+
+            Renderer::SetEntityID(i);
+            Renderer::DrawTriangle(m_Scene->GetTransform(i).GetMatrix());
+        }
+
+        glBindFramebuffer(GL_FRAMEBUFFER,0);
+
+        // Restore viewport
+        GLFWwindow* win = glfwGetCurrentContext();
+        int ww,wh;
+        glfwGetFramebufferSize(win,&ww,&wh);
+        glViewport(0,0,ww,wh);
+
+        // --------------------
+        // CLICK SELECT
+        // --------------------
+        if(ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+        {
+            ImVec2 mouse = ImGui::GetMousePos();
+            ImVec2 origin = ImGui::GetItemRectMin();
+
+            int px = (int)(mouse.x-origin.x);
+            int py = (int)(size.y-(mouse.y-origin.y));
+
+            int id = Renderer::ReadEntityID(px,py);
+
+            if(id>=0)
+                selectedEntity = id;
+        }
 
         ImGui::End();
 
@@ -214,7 +339,7 @@ void Application::Run() {
         if (selectedEntity >= 0 && selectedEntity < (int)m_Scene->GetEntities().size())
         {
             auto& transform = m_Scene->GetTransform(selectedEntity);
-
+            glm::mat4 transformMatrix = transform.GetMatrix();
             ImGui::Text("Transform");
             ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
             ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
