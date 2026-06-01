@@ -64,6 +64,18 @@
     <ClCompile Include="D:\Chaos_Engine\external\imguizmo\ImGuizmo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Commands\CommandManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Commands\MoveCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Commands\SpawnCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Commands\DestroyCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Chaos_Engine\CMakeLists.txt" />

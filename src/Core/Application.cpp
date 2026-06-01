@@ -18,6 +18,11 @@
 #include "backends/imgui_impl_opengl3.h"
 #include <glad/glad.h>
 #include "ImGuizmo.h"
+#include "Commands/CommandManager.h"
+#include "Commands/MoveCommand.h"
+#include "Commands/SpawnCommand.h"
+#include "Commands/DestroyCommand.h"
+#include <memory>
 
 
 Window* g_MainWindow = nullptr;
@@ -80,7 +85,9 @@ void Application::Run() {
                 float x = ((rand() % 200) - 100) / 100.0f;
                 float y = ((rand() % 200) - 100) / 100.0f;
 
-                m_Scene->SpawnEntity({x, y, 0.0f});
+                CommandManager::ExecuteCommand(
+                    std::make_unique<SpawnCommand>(m_Scene, glm::vec3{x, y, 0.0f})
+                );
             }
         }
         else {
@@ -103,6 +110,19 @@ void Application::Run() {
             if (Input::IsKeyPressed(Key::A)) camPos.x -= speed;
             if (Input::IsKeyPressed(Key::D)) camPos.x += speed;
         }
+
+        // Undo / Redo  —  one-shot (no repeat every frame while key held)
+        static bool undoPressed = false;
+        static bool redoPressed = false;
+        bool ctrl = Input::IsKeyPressed(Key::LEFT_CONTROL);
+        bool zKey = Input::IsKeyPressed(Key::Z);
+        bool yKey = Input::IsKeyPressed(Key::Y);
+
+        if (ctrl && zKey) { if (!undoPressed) { CommandManager::Undo(); undoPressed = true; } }
+        else              { undoPressed = false; }
+
+        if (ctrl && yKey) { if (!redoPressed) { CommandManager::Redo(); redoPressed = true; } }
+        else              { redoPressed = false; }
 
         // ALT + LMB → smooth pan   |   ALT + RMB → smooth zoom
         if (sceneHovered && altPressed && !gizmoInUse)
@@ -191,31 +211,33 @@ void Application::Run() {
         // --------------------
         // DRAW GIZMO
         // --------------------
+        // ── oldPosition tracked per drag, reset on selection change ─────────
+        static glm::vec3 oldPosition = {};
+        static int        lastSelected = -1;
+
         if (selectedEntity >= 0)
         {
             auto& transform = m_Scene->GetTransform(selectedEntity);
-
             glm::mat4 transformMatrix = transform.GetMatrix();
-
             Camera* cam = Renderer::GetCamera();
 
-            // Draw gizmo on the default ImGui drawlist
+            // Reset oldPosition when selection changes
+            if (selectedEntity != lastSelected)
+            {
+                oldPosition  = transform.Position;
+                lastSelected = selectedEntity;
+            }
+
             ImGuizmo::SetDrawlist();
 
-            // Use scene viewport rectangle
             ImVec2 imagePos  = ImGui::GetItemRectMin();
             ImVec2 imageSize = ImGui::GetItemRectSize();
+            ImGuizmo::SetRect(imagePos.x, imagePos.y, imageSize.x, imageSize.y);
 
-            ImGuizmo::SetRect(
-                imagePos.x,
-                imagePos.y,
-                imageSize.x,
-                imageSize.y
-            );
-
-            // Build view matrix from camera position
-            glm::mat4 view = glm::translate(glm::mat4(1.0f), -camPos);
+            glm::mat4 view       = glm::translate(glm::mat4(1.0f), -camPos);
             glm::mat4 projection = cam->GetProjection();
+
+            bool wasUsing = gizmoInUse;
 
             ImGuizmo::Manipulate(
                 glm::value_ptr(view),
@@ -225,55 +247,78 @@ void Application::Run() {
                 glm::value_ptr(transformMatrix)
             );
 
-            if (ImGuizmo::IsUsing())
+            bool isUsing = ImGuizmo::IsUsing();
+
+            if (isUsing)
             {
                 glm::vec3 translation, rotation, scale;
-
                 ImGuizmo::DecomposeMatrixToComponents(
                     glm::value_ptr(transformMatrix),
-                    &translation.x,
-                    &rotation.x,
-                    &scale.x
+                    &translation.x, &rotation.x, &scale.x
                 );
+
+                // Capture start position on first frame of drag
+                if (!wasUsing)
+                    oldPosition = transform.Position;
 
                 transform.Position = translation;
             }
+            else if (wasUsing)
+            {
+                // Gizmo just released → record a single undo command
+                glm::vec3 newPos = transform.Position;
+                if (oldPosition != newPos)
+                {
+                    CommandManager::ExecuteCommand(
+                        std::make_unique<MoveCommand>(
+                            m_Scene, selectedEntity, oldPosition, newPos
+                        )
+                    );
+                }
+                oldPosition = newPos;
+            }
+
+            gizmoInUse = isUsing;
         }
+        else
+        {
+            gizmoInUse   = false;
+            lastSelected = -1;
+        }
+
         // --------------------
         // PICKING PASS
         // --------------------
         Renderer::BindPickingFramebuffer();
 
-        glViewport(0,0,(int)size.x,(int)size.y);
+        glViewport(0, 0, (int)size.x, (int)size.y);
 
         GLint clearVal = -1;
-        glClearBufferiv(GL_COLOR,0,&clearVal);
+        glClearBufferiv(GL_COLOR, 0, &clearVal);
 
         Renderer::PreparePickingShader();
 
-        const auto& pickEntities = m_Scene->GetEntities();
+        const auto& pickEntities    = m_Scene->GetEntities();
         const auto& pickRenderables = m_Scene->GetRenderables();
 
-        for (int i=0;i<(int)pickEntities.size();i++)
+        for (int i = 0; i < (int)pickEntities.size(); i++)
         {
-            if(!pickRenderables[i].Visible) continue;
-
+            if (!pickRenderables[i].Visible) continue;
             Renderer::SetEntityID(i);
             Renderer::DrawTriangle(m_Scene->GetTransform(i).GetMatrix());
         }
 
-        glBindFramebuffer(GL_FRAMEBUFFER,0);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         // Restore viewport
         GLFWwindow* win = glfwGetCurrentContext();
-        int ww,wh;
-        glfwGetFramebufferSize(win,&ww,&wh);
-        glViewport(0,0,ww,wh);
+        int ww, wh;
+        glfwGetFramebufferSize(win, &ww, &wh);
+        glViewport(0, 0, ww, wh);
 
         // --------------------
         // CLICK SELECT
         // --------------------
-        // Click-select: only when NOT panning (ALT+LMB) and NOT using gizmo
         if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0) && !altPressed && !gizmoInUse)
         {
             ImVec2 mouse  = ImGui::GetMousePos();
@@ -284,12 +329,12 @@ void Application::Run() {
 
             int id = Renderer::ReadEntityID(px, py);
             if (id >= 0)
+            {
                 selectedEntity = id;
                 Renderer::SetSelectedEntity(id);
+                oldPosition = m_Scene->GetTransform(id).Position; // reset undo baseline
+            }
         }
-
-        // Record gizmo state for next frame so camera gating is one frame early (tight)
-        gizmoInUse = ImGuizmo::IsUsing();
 
         ImGui::End();
 
@@ -328,9 +373,20 @@ void Application::Run() {
                 destroyPressed = true;
 
                 const auto& entities = m_Scene->GetEntities();
-                if (!entities.empty()) {
-                    Entity e = entities.back();
-                    m_Scene->DestroyEntity(e);
+                int lastVisible = -1;
+                for (int i = (int)entities.size() - 1; i >= 0; i--) {
+                    if (m_Scene->GetRender(i).Visible) {
+                        lastVisible = i;
+                        break;
+                    }
+                }
+                if (lastVisible >= 0) {
+                    CommandManager::ExecuteCommand(
+                        std::make_unique<DestroyCommand>(m_Scene, lastVisible)
+                    );
+                    if (selectedEntity == lastVisible) {
+                        selectedEntity = -1;
+                    }
                 }
             }
         }
@@ -397,7 +453,9 @@ void Application::Run() {
 
             if (ImGui::Button("Delete"))
             {
-                m_Scene->DestroyEntity(selectedEntity);
+                CommandManager::ExecuteCommand(
+                    std::make_unique<DestroyCommand>(m_Scene, selectedEntity)
+                );
                 selectedEntity = -1;
             }
         }
@@ -416,7 +474,9 @@ void Application::Run() {
         {
             float x = ((rand() % 200) - 100) / 100.0f;
             float y = ((rand() % 200) - 100) / 100.0f;
-            m_Scene->SpawnEntity({x, y, 0.0f});
+            CommandManager::ExecuteCommand(
+                std::make_unique<SpawnCommand>(m_Scene, glm::vec3{x, y, 0.0f})
+            );
         }
 
         // Save / Load

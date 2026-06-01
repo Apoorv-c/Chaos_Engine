@@ -28,7 +28,10 @@ add_executable(Chaos_Engine
     external/imgui/backends/imgui_impl_glfw.cpp
     external/imgui/backends/imgui_impl_opengl3.cpp
     external/imguizmo/ImGuizmo.cpp
-
+    src/Commands/CommandManager.cpp
+    src/Commands/MoveCommand.cpp
+    src/Commands/SpawnCommand.cpp
+    src/Commands/DestroyCommand.cpp
 
 
 

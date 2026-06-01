@@ -12,5 +12,8 @@ enum class Key{
     X,
     F5,
     F9,
-    LEFT_ALT
+    LEFT_ALT,
+    LEFT_CONTROL,
+    Z,
+    Y
 };

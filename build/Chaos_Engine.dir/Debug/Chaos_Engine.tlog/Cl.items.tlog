@@ -19,3 +19,7 @@ D:\Chaos_Engine\external\imgui\imgui_widgets.cpp;D:\Chaos_Engine\build\Chaos_Eng
 D:\Chaos_Engine\external\imgui\backends\imgui_impl_glfw.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_impl_glfw.obj
 D:\Chaos_Engine\external\imgui\backends\imgui_impl_opengl3.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\imgui_impl_opengl3.obj
 D:\Chaos_Engine\external\imguizmo\ImGuizmo.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\ImGuizmo.obj
+D:\Chaos_Engine\src\Commands\CommandManager.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\CommandManager.obj
+D:\Chaos_Engine\src\Commands\MoveCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\MoveCommand.obj
+D:\Chaos_Engine\src\Commands\SpawnCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\SpawnCommand.obj
+D:\Chaos_Engine\src\Commands\DestroyCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\DestroyCommand.obj

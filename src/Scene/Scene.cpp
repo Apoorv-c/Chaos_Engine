@@ -113,3 +113,15 @@ void Scene::DestroyEntity(Entity e) {
     m_Renderables[e].Visible = false;
     m_FreeEntities.push(e);
 }
+
+void Scene::RemoveFromFreeList(Entity e) {
+    std::queue<Entity> temp;
+    while (!m_FreeEntities.empty()) {
+        Entity front = m_FreeEntities.front();
+        m_FreeEntities.pop();
+        if (front != e) {
+            temp.push(front);
+        }
+    }
+    m_FreeEntities = temp;
+}

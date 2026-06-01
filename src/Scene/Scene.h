@@ -26,7 +26,7 @@ public:
     std::vector<TransformComponent>& GetTransforms() { return m_Transforms; }
     const std::vector<RenderComponent>& GetRenderables() const { return m_Renderables; }
     void DestroyEntity(Entity e);
-    
+    void RemoveFromFreeList(Entity e);
 
 private:
     std::vector<Entity> m_Entities;
