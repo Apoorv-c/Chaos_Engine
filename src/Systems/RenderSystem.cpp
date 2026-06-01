@@ -10,6 +10,11 @@ void RenderSystem::Render(
         if (!renderables[i].Visible)
             continue;
 
-        Renderer::DrawTriangle(transforms[i].GetMatrix());
+        bool selected = ((int)i == Renderer::GetSelectedEntity());
+
+        Renderer::DrawTriangle(
+            transforms[i].GetMatrix(),
+            selected
+        );
     }
 }

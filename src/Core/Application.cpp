@@ -43,9 +43,29 @@ Application::Application()
 }
 
 void Application::Run() {
+    static double lastMouseX = 0.0;
+    static double lastMouseY = 0.0;
+    static bool firstMouse = true;
+    static bool sceneHovered = false;   // updated each frame from previous frame's gizmo state
+    static bool gizmoInUse  = false;    // previous-frame gizmo state
     static int selectedEntity = -1;
     while (!m_Window.ShouldClose()) {
         Time::Update();
+
+        // ── Mouse delta (must be inside the loop) ────────────────────────────
+        double mouseX, mouseY;
+        glfwGetCursorPos(g_MainWindow->GetNativeWindow(), &mouseX, &mouseY);
+        if (firstMouse) {
+            lastMouseX = mouseX;
+            lastMouseY = mouseY;
+            firstMouse = false;
+        }
+        double deltaX = mouseX - lastMouseX;
+        double deltaY = mouseY - lastMouseY;
+        lastMouseX = mouseX;
+        lastMouseY = mouseY;
+        // ─────────────────────────────────────────────────────────────────────
+
         static float timer = 0.0f;
         static int frames = 0;
 
@@ -66,22 +86,43 @@ void Application::Run() {
         else {
             spawnPressed = false;
         }
+
         Camera* cam = Renderer::GetCamera();
         static glm::vec3 camPos = {0.0f, 0.0f, 0.0f};
-        float speed = 1.5f * Time::DeltaTime();
-        if(Input::IsKeyPressed(Key::W)) {
-            camPos.y += speed;
+        static float zoom = 1.0f;
+
+        bool altPressed  = Input::IsKeyPressed(Key::LEFT_ALT);
+        bool leftMouse   = glfwGetMouseButton(g_MainWindow->GetNativeWindow(), GLFW_MOUSE_BUTTON_LEFT)  == GLFW_PRESS;
+        bool rightMouse  = glfwGetMouseButton(g_MainWindow->GetNativeWindow(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS;
+
+        // WASD only when scene is hovered and ALT is NOT held
+        if (sceneHovered && !altPressed) {
+            float speed = 1.5f * Time::DeltaTime();
+            if (Input::IsKeyPressed(Key::W)) camPos.y += speed;
+            if (Input::IsKeyPressed(Key::S)) camPos.y -= speed;
+            if (Input::IsKeyPressed(Key::A)) camPos.x -= speed;
+            if (Input::IsKeyPressed(Key::D)) camPos.x += speed;
         }
-        if(Input::IsKeyPressed(Key::S)) {
-            camPos.y -= speed;
+
+        // ALT + LMB → smooth pan   |   ALT + RMB → smooth zoom
+        if (sceneHovered && altPressed && !gizmoInUse)
+        {
+            if (leftMouse)
+            {
+                // Pan: drag right → camera moves right (no vanish)
+                float panSpeed = 0.005f * zoom;
+                camPos.x -= (float)deltaX * panSpeed;
+                camPos.y += (float)deltaY * panSpeed;
+            }
+
+            if (rightMouse)
+            {
+                // Zoom: drag RIGHT = zoom in, drag LEFT = zoom out (no reverse)
+                zoom *= (1.0f - (float)deltaX * 0.01f);
+                if (zoom < 0.2f) zoom = 0.2f;
+                if (zoom > 5.0f) zoom = 5.0f;
+            }
         }
-        if(Input::IsKeyPressed(Key::A)) {
-            camPos.x -= speed;
-        }
-        if(Input::IsKeyPressed(Key::D)) {
-            camPos.x += speed;
-        }
-        
         cam->SetPosition(camPos);
         SystemManager::Update(*m_Scene, Time::DeltaTime());
 
@@ -94,10 +135,11 @@ void Application::Run() {
         ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
         
         ImGui::Begin("Scene");
-
         ImVec2 size = ImGui::GetContentRegionAvail();
-
-        // Resize framebuffer to panel size
+        // Update sceneHovered AFTER rendering the gizmo (see end of gizmo block).
+        // Here we only update the window-level hover; gizmo exclusion uses previous frame.
+        bool sceneWindowHovered = ImGui::IsWindowHovered(ImGuiHoveredFlags_AllowWhenBlockedByActiveItem);
+        sceneHovered = sceneWindowHovered && !gizmoInUse;
         Renderer::ResizeFramebuffer((int)size.x, (int)size.y);
 
         // --------------------
@@ -231,26 +273,30 @@ void Application::Run() {
         // --------------------
         // CLICK SELECT
         // --------------------
-        if(ImGui::IsItemHovered() && ImGui::IsMouseClicked(0))
+        // Click-select: only when NOT panning (ALT+LMB) and NOT using gizmo
+        if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0) && !altPressed && !gizmoInUse)
         {
-            ImVec2 mouse = ImGui::GetMousePos();
+            ImVec2 mouse  = ImGui::GetMousePos();
             ImVec2 origin = ImGui::GetItemRectMin();
 
-            int px = (int)(mouse.x-origin.x);
-            int py = (int)(size.y-(mouse.y-origin.y));
+            int px = (int)(mouse.x - origin.x);
+            int py = (int)(size.y  - (mouse.y - origin.y));
 
-            int id = Renderer::ReadEntityID(px,py);
-
-            if(id>=0)
+            int id = Renderer::ReadEntityID(px, py);
+            if (id >= 0)
                 selectedEntity = id;
+                Renderer::SetSelectedEntity(id);
         }
+
+        // Record gizmo state for next frame so camera gating is one frame early (tight)
+        gizmoInUse = ImGuizmo::IsUsing();
 
         ImGui::End();
 
         static float angle = 0.0f;
         angle += Time::DeltaTime();
 
-        static float zoom = 1.0f;
+        
 
         if (Input::IsKeyPressed(Key::Q))
             zoom += Time::DeltaTime();

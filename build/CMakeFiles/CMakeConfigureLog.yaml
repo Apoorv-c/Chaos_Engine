@@ -37,7 +37,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -55,11 +54,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -71,6 +71,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "message-v1"
     backtrace:
@@ -87,7 +88,7 @@ events:
       The output was:
       0
       MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-      Build started 13-03-2026 00:36:25.
+      Build started 01-06-2026 21:24:19.
       
       Project "D:\\Chaos_Engine\\build\\CMakeFiles\\4.2.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -116,7 +117,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.91
+      Time Elapsed 00:00:01.52
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -151,7 +152,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -169,11 +169,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -185,6 +186,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe"
@@ -192,7 +194,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -210,11 +211,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -226,6 +228,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -251,7 +254,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -269,11 +271,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -285,6 +288,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.exe"
@@ -295,9 +299,6 @@ events:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link.com"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link.exe"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link"
       - "C:/Python314/Scripts/lld-link.com"
       - "C:/Python314/Scripts/lld-link.exe"
       - "C:/Python314/Scripts/lld-link"
@@ -349,9 +350,6 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.com"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.exe"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link"
       - "C:/Program Files/nodejs/lld-link.com"
       - "C:/Program Files/nodejs/lld-link.exe"
       - "C:/Program Files/nodejs/lld-link"
@@ -364,6 +362,12 @@ events:
       - "C:/Program Files/dotnet/lld-link.com"
       - "C:/Program Files/dotnet/lld-link.exe"
       - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link"
+      - "C:/Users/HP/.local/bin/lld-link.com"
+      - "C:/Users/HP/.local/bin/lld-link.exe"
+      - "C:/Users/HP/.local/bin/lld-link"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
@@ -397,12 +401,14 @@ events:
       - "C:/Users/HP/.dotnet/tools/lld-link.com"
       - "C:/Users/HP/.dotnet/tools/lld-link.exe"
       - "C:/Users/HP/.dotnet/tools/lld-link"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.com"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.exe"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -420,11 +426,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -436,6 +443,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -459,7 +467,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -477,11 +484,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -493,6 +501,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.com"
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe"
@@ -500,7 +509,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -518,11 +526,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -534,6 +543,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -557,7 +567,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -575,11 +584,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -591,6 +601,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/mt.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/mt.exe"
@@ -601,9 +612,6 @@ events:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mt.com"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mt.exe"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/mt"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/mt.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/mt.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/mt"
       - "C:/Python314/Scripts/mt.com"
       - "C:/Python314/Scripts/mt.exe"
       - "C:/Python314/Scripts/mt"
@@ -655,9 +663,6 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/mt"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt.com"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt.exe"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt"
       - "C:/Program Files/nodejs/mt.com"
       - "C:/Program Files/nodejs/mt.exe"
       - "C:/Program Files/nodejs/mt"
@@ -670,6 +675,12 @@ events:
       - "C:/Program Files/dotnet/mt.com"
       - "C:/Program Files/dotnet/mt.exe"
       - "C:/Program Files/dotnet/mt"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/mt"
+      - "C:/Users/HP/.local/bin/mt.com"
+      - "C:/Users/HP/.local/bin/mt.exe"
+      - "C:/Users/HP/.local/bin/mt"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.com"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt.exe"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/mt"
@@ -703,12 +714,14 @@ events:
       - "C:/Users/HP/.dotnet/tools/mt.com"
       - "C:/Users/HP/.dotnet/tools/mt.exe"
       - "C:/Users/HP/.dotnet/tools/mt"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.com"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt.exe"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/mt"
     found: false
     search_context:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -726,11 +739,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -742,6 +756,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -765,7 +780,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -783,11 +797,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -799,6 +814,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lib.com"
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lib.exe"
@@ -806,7 +822,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -824,11 +839,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -840,6 +856,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -869,7 +886,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -887,11 +903,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -903,6 +920,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "message-v1"
     backtrace:
@@ -919,7 +937,7 @@ events:
       The output was:
       0
       MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-      Build started 13-03-2026 00:36:26.
+      Build started 01-06-2026 21:24:21.
       
       Project "D:\\Chaos_Engine\\build\\CMakeFiles\\4.2.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -948,7 +966,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.68
+      Time Elapsed 00:00:00.72
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -983,7 +1001,6 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -1001,11 +1018,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -1017,6 +1035,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
     searched_directories:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/lld-link.exe"
@@ -1027,9 +1046,6 @@ events:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link.com"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link.exe"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/lld-link"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/lld-link"
       - "C:/Python314/Scripts/lld-link.com"
       - "C:/Python314/Scripts/lld-link.exe"
       - "C:/Python314/Scripts/lld-link"
@@ -1081,9 +1097,6 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lld-link"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.com"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.exe"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link"
       - "C:/Program Files/nodejs/lld-link.com"
       - "C:/Program Files/nodejs/lld-link.exe"
       - "C:/Program Files/nodejs/lld-link"
@@ -1096,6 +1109,12 @@ events:
       - "C:/Program Files/dotnet/lld-link.com"
       - "C:/Program Files/dotnet/lld-link.exe"
       - "C:/Program Files/dotnet/lld-link"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/lld-link"
+      - "C:/Users/HP/.local/bin/lld-link.com"
+      - "C:/Users/HP/.local/bin/lld-link.exe"
+      - "C:/Users/HP/.local/bin/lld-link"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.com"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link.exe"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/lld-link"
@@ -1129,12 +1148,14 @@ events:
       - "C:/Users/HP/.dotnet/tools/lld-link.com"
       - "C:/Users/HP/.dotnet/tools/lld-link.exe"
       - "C:/Users/HP/.dotnet/tools/lld-link"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.com"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link.exe"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/lld-link"
     found: false
     search_context:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -1152,11 +1173,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -1168,6 +1190,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
   -
     kind: "find-v1"
     backtrace:
@@ -1193,7 +1216,6 @@ events:
     candidate_directories:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -1211,11 +1233,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -1227,6 +1250,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -1246,9 +1270,6 @@ events:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/rc.com"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/rc.exe"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/rc"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/rc.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/rc.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/rc"
       - "C:/Python314/Scripts/rc.com"
       - "C:/Python314/Scripts/rc.exe"
       - "C:/Python314/Scripts/rc"
@@ -1300,9 +1321,6 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/rc"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc.com"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc.exe"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc"
       - "C:/Program Files/nodejs/rc.com"
       - "C:/Program Files/nodejs/rc.exe"
       - "C:/Program Files/nodejs/rc"
@@ -1315,6 +1333,12 @@ events:
       - "C:/Program Files/dotnet/rc.com"
       - "C:/Program Files/dotnet/rc.exe"
       - "C:/Program Files/dotnet/rc"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/rc"
+      - "C:/Users/HP/.local/bin/rc.com"
+      - "C:/Users/HP/.local/bin/rc.exe"
+      - "C:/Users/HP/.local/bin/rc"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.com"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc.exe"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/rc"
@@ -1348,6 +1372,9 @@ events:
       - "C:/Users/HP/.dotnet/tools/rc.com"
       - "C:/Users/HP/.dotnet/tools/rc.exe"
       - "C:/Users/HP/.dotnet/tools/rc"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc.com"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc.exe"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/rc"
       - "C:/Program Files/bin/rc.com"
       - "C:/Program Files/bin/rc.exe"
       - "C:/Program Files/bin/rc"
@@ -1389,7 +1416,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -1407,11 +1433,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -1423,6 +1450,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Chaos_Engine"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"
@@ -1438,8 +1466,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-rgywks"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-rgywks"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-xl0t5s"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-xl0t5s"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1448,39 +1476,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-rgywks'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-xl0t5s'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f70ec.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_9dd1b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 13-03-2026 00:36:27.
+        Build started 01-06-2026 21:24:22.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rgywks\\cmTC_f70ec.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xl0t5s\\cmTC_9dd1b.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rgywks\\Debug\\".
-          Creating directory "cmTC_f70ec.dir\\Debug\\cmTC_f70ec.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xl0t5s\\Debug\\".
+          Creating directory "cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_f70ec.dir\\Debug\\cmTC_f70ec.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_f70ec.dir\\Debug\\cmTC_f70ec.tlog\\unsuccessfulbuild".
+          Creating "cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f70ec.dir\\Debug\\\\" /Fd"cmTC_f70ec.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_9dd1b.dir\\Debug\\\\" /Fd"cmTC_9dd1b.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f70ec.dir\\Debug\\\\" /Fd"cmTC_f70ec.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_9dd1b.dir\\Debug\\\\" /Fd"cmTC_9dd1b.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rgywks\\Debug\\cmTC_f70ec.exe" /INCREMENTAL /ILK:"cmTC_f70ec.dir\\Debug\\cmTC_f70ec.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-rgywks/Debug/cmTC_f70ec.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-rgywks/Debug/cmTC_f70ec.lib" /MACHINE:X64  /machine:x64 cmTC_f70ec.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_f70ec.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rgywks\\Debug\\cmTC_f70ec.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xl0t5s\\Debug\\cmTC_9dd1b.exe" /INCREMENTAL /ILK:"cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-xl0t5s/Debug/cmTC_9dd1b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-xl0t5s/Debug/cmTC_9dd1b.lib" /MACHINE:X64  /machine:x64 cmTC_9dd1b.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_9dd1b.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xl0t5s\\Debug\\cmTC_9dd1b.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_f70ec.dir\\Debug\\cmTC_f70ec.tlog\\unsuccessfulbuild".
-          Touching "cmTC_f70ec.dir\\Debug\\cmTC_f70ec.tlog\\cmTC_f70ec.lastbuildstate".
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rgywks\\cmTC_f70ec.vcxproj" (default targets).
+          Deleting file "cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.tlog\\unsuccessfulbuild".
+          Touching "cmTC_9dd1b.dir\\Debug\\cmTC_9dd1b.tlog\\cmTC_9dd1b.lastbuildstate".
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-xl0t5s\\cmTC_9dd1b.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.64
+        Time Elapsed 00:00:00.81
         
       exitCode: 0
   -
@@ -1520,8 +1548,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5pxjoq"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5pxjoq"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-8zzbbn"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-8zzbbn"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1531,39 +1559,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5pxjoq'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-8zzbbn'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e22cf.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f62e1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 13-03-2026 00:36:28.
+        Build started 01-06-2026 21:24:23.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5pxjoq\\cmTC_e22cf.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8zzbbn\\cmTC_f62e1.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5pxjoq\\Debug\\".
-          Creating directory "cmTC_e22cf.dir\\Debug\\cmTC_e22cf.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8zzbbn\\Debug\\".
+          Creating directory "cmTC_f62e1.dir\\Debug\\cmTC_f62e1.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_e22cf.dir\\Debug\\cmTC_e22cf.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_e22cf.dir\\Debug\\cmTC_e22cf.tlog\\unsuccessfulbuild".
+          Creating "cmTC_f62e1.dir\\Debug\\cmTC_f62e1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_f62e1.dir\\Debug\\cmTC_f62e1.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_e22cf.dir\\Debug\\\\" /Fd"cmTC_e22cf.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_f62e1.dir\\Debug\\\\" /Fd"cmTC_f62e1.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_e22cf.dir\\Debug\\\\" /Fd"cmTC_e22cf.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_f62e1.dir\\Debug\\\\" /Fd"cmTC_f62e1.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5pxjoq\\Debug\\cmTC_e22cf.exe" /INCREMENTAL /ILK:"cmTC_e22cf.dir\\Debug\\cmTC_e22cf.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5pxjoq/Debug/cmTC_e22cf.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5pxjoq/Debug/cmTC_e22cf.lib" /MACHINE:X64  /machine:x64 cmTC_e22cf.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_e22cf.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5pxjoq\\Debug\\cmTC_e22cf.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8zzbbn\\Debug\\cmTC_f62e1.exe" /INCREMENTAL /ILK:"cmTC_f62e1.dir\\Debug\\cmTC_f62e1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-8zzbbn/Debug/cmTC_f62e1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-8zzbbn/Debug/cmTC_f62e1.lib" /MACHINE:X64  /machine:x64 cmTC_f62e1.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_f62e1.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8zzbbn\\Debug\\cmTC_f62e1.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_e22cf.dir\\Debug\\cmTC_e22cf.tlog\\unsuccessfulbuild".
-          Touching "cmTC_e22cf.dir\\Debug\\cmTC_e22cf.tlog\\cmTC_e22cf.lastbuildstate".
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5pxjoq\\cmTC_e22cf.vcxproj" (default targets).
+          Deleting file "cmTC_f62e1.dir\\Debug\\cmTC_f62e1.tlog\\unsuccessfulbuild".
+          Touching "cmTC_f62e1.dir\\Debug\\cmTC_f62e1.tlog\\cmTC_f62e1.lastbuildstate".
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-8zzbbn\\cmTC_f62e1.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.62
+        Time Elapsed 00:00:00.69
         
       exitCode: 0
   -
@@ -1605,8 +1633,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-owzwte"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-owzwte"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-dwa3zk"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-dwa3zk"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1616,39 +1644,39 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-owzwte'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-dwa3zk'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e03fa.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_21f49.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 13-03-2026 00:36:29.
+        Build started 01-06-2026 21:24:24.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\cmTC_e03fa.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\cmTC_21f49.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\Debug\\".
-          Creating directory "cmTC_e03fa.dir\\Debug\\cmTC_e03fa.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\Debug\\".
+          Creating directory "cmTC_21f49.dir\\Debug\\cmTC_21f49.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_e03fa.dir\\Debug\\cmTC_e03fa.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_e03fa.dir\\Debug\\cmTC_e03fa.tlog\\unsuccessfulbuild".
+          Creating "cmTC_21f49.dir\\Debug\\cmTC_21f49.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_21f49.dir\\Debug\\cmTC_21f49.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_e03fa.dir\\Debug\\\\" /Fd"cmTC_e03fa.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_21f49.dir\\Debug\\\\" /Fd"cmTC_21f49.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_e03fa.dir\\Debug\\\\" /Fd"cmTC_e03fa.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_21f49.dir\\Debug\\\\" /Fd"cmTC_21f49.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\src.c"
           src.c
-        D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\cmTC_e03fa.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\cmTC_e03fa.vcxproj" (default targets) -- FAILED.
+        D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\cmTC_21f49.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\cmTC_21f49.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\cmTC_e03fa.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\cmTC_21f49.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-owzwte\\cmTC_e03fa.vcxproj]
+          D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-dwa3zk\\cmTC_21f49.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.40
+        Time Elapsed 00:00:00.66
         
       exitCode: 1
   -
@@ -1661,8 +1689,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-hyh10k"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-hyh10k"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ib6ggr"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ib6ggr"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1672,36 +1700,36 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-hyh10k'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ib6ggr'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_352ba.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0532b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 13-03-2026 00:36:30.
+        Build started 01-06-2026 21:24:25.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\cmTC_352ba.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\cmTC_0532b.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\Debug\\".
-          Creating directory "cmTC_352ba.dir\\Debug\\cmTC_352ba.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\Debug\\".
+          Creating directory "cmTC_0532b.dir\\Debug\\cmTC_0532b.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_352ba.dir\\Debug\\cmTC_352ba.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_352ba.dir\\Debug\\cmTC_352ba.tlog\\unsuccessfulbuild".
+          Creating "cmTC_0532b.dir\\Debug\\cmTC_0532b.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_0532b.dir\\Debug\\cmTC_0532b.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_352ba.dir\\Debug\\\\" /Fd"cmTC_352ba.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_0532b.dir\\Debug\\\\" /Fd"cmTC_0532b.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_352ba.dir\\Debug\\\\" /Fd"cmTC_352ba.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_0532b.dir\\Debug\\\\" /Fd"cmTC_0532b.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\Debug\\cmTC_352ba.exe" /INCREMENTAL /ILK:"cmTC_352ba.dir\\Debug\\cmTC_352ba.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-hyh10k/Debug/cmTC_352ba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-hyh10k/Debug/cmTC_352ba.lib" /MACHINE:X64  /machine:x64 cmTC_352ba.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\cmTC_352ba.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\cmTC_352ba.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\Debug\\cmTC_0532b.exe" /INCREMENTAL /ILK:"cmTC_0532b.dir\\Debug\\cmTC_0532b.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ib6ggr/Debug/cmTC_0532b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ib6ggr/Debug/cmTC_0532b.lib" /MACHINE:X64  /machine:x64 cmTC_0532b.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\cmTC_0532b.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\cmTC_0532b.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\cmTC_352ba.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\cmTC_0532b.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-hyh10k\\cmTC_352ba.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ib6ggr\\cmTC_0532b.vcxproj]
         
             0 Warning(s)
             1 Error(s)
@@ -1719,8 +1747,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5veitu"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5veitu"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-0f7n6z"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-0f7n6z"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1730,41 +1758,41 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5veitu'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-0f7n6z'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e5fae.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a8a7d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 13-03-2026 00:36:30.
+        Build started 01-06-2026 21:24:26.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\cmTC_e5fae.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\cmTC_a8a7d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\Debug\\".
-          Creating directory "cmTC_e5fae.dir\\Debug\\cmTC_e5fae.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\Debug\\".
+          Creating directory "cmTC_a8a7d.dir\\Debug\\cmTC_a8a7d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_e5fae.dir\\Debug\\cmTC_e5fae.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_e5fae.dir\\Debug\\cmTC_e5fae.tlog\\unsuccessfulbuild".
+          Creating "cmTC_a8a7d.dir\\Debug\\cmTC_a8a7d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a8a7d.dir\\Debug\\cmTC_a8a7d.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_e5fae.dir\\Debug\\\\" /Fd"cmTC_e5fae.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_a8a7d.dir\\Debug\\\\" /Fd"cmTC_a8a7d.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_e5fae.dir\\Debug\\\\" /Fd"cmTC_e5fae.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_a8a7d.dir\\Debug\\\\" /Fd"cmTC_a8a7d.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\Debug\\cmTC_e5fae.exe" /INCREMENTAL /ILK:"cmTC_e5fae.dir\\Debug\\cmTC_e5fae.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5veitu/Debug/cmTC_e5fae.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-5veitu/Debug/cmTC_e5fae.lib" /MACHINE:X64  /machine:x64 cmTC_e5fae.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\cmTC_e5fae.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\cmTC_e5fae.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\Debug\\cmTC_a8a7d.exe" /INCREMENTAL /ILK:"cmTC_a8a7d.dir\\Debug\\cmTC_a8a7d.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-0f7n6z/Debug/cmTC_a8a7d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-0f7n6z/Debug/cmTC_a8a7d.lib" /MACHINE:X64  /machine:x64 cmTC_a8a7d.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\cmTC_a8a7d.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\cmTC_a8a7d.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\cmTC_e5fae.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\cmTC_a8a7d.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-5veitu\\cmTC_e5fae.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-0f7n6z\\cmTC_a8a7d.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.47
+        Time Elapsed 00:00:00.54
         
       exitCode: 1
   -
@@ -1789,7 +1817,6 @@ events:
     candidate_directories:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/"
       - "C:/Python314/Scripts/"
       - "C:/Python314/"
       - "C:/Program Files/Common Files/Oracle/Java/javapath/"
@@ -1807,11 +1834,12 @@ events:
       - "C:/Program Files/Git/cmd/"
       - "C:/Program Files/CMake/bin/"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
       - "C:/Program Files/nodejs/"
       - "C:/ProgramData/chocolatey/bin/"
       - "C:/Program Files/cursor/resources/app/bin/"
       - "C:/Program Files/dotnet/"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/"
+      - "C:/Users/HP/.local/bin/"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/"
       - "D:/msys/mingw64/bin/"
       - "C:/Users/HP/AppData/Local/Programs/Python/Python310/Scripts/"
@@ -1823,6 +1851,7 @@ events:
       - "C:/Users/HP/AppData/Roaming/npm/"
       - "C:/Users/HP/AppData/Local/Programs/Antigravity/bin/"
       - "C:/Users/HP/.dotnet/tools/"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/"
       - "C:/Program Files/bin/"
       - "C:/Program Files/sbin/"
       - "C:/Program Files/"
@@ -1847,9 +1876,6 @@ events:
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/doxygen.com"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/doxygen.exe"
       - "C:/Users/HP/AppData/Roaming/Code/User/globalStorage/github.copilot-chat/copilotCli/doxygen"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/doxygen.com"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/doxygen.exe"
-      - "C:/Users/HP/AppData/Local/Programs/Microsoft VS Code/doxygen"
       - "C:/Python314/Scripts/doxygen.com"
       - "C:/Python314/Scripts/doxygen.exe"
       - "C:/Python314/Scripts/doxygen"
@@ -1901,9 +1927,6 @@ events:
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/doxygen.com"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/doxygen.exe"
       - "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/doxygen"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen.com"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen.exe"
-      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen"
       - "C:/Program Files/nodejs/doxygen.com"
       - "C:/Program Files/nodejs/doxygen.exe"
       - "C:/Program Files/nodejs/doxygen"
@@ -1916,6 +1939,12 @@ events:
       - "C:/Program Files/dotnet/doxygen.com"
       - "C:/Program Files/dotnet/doxygen.exe"
       - "C:/Program Files/dotnet/doxygen"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen.com"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen.exe"
+      - "C:/Program Files/Cloudflare/Cloudflare WARP/doxygen"
+      - "C:/Users/HP/.local/bin/doxygen.com"
+      - "C:/Users/HP/.local/bin/doxygen.exe"
+      - "C:/Users/HP/.local/bin/doxygen"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/doxygen.com"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/doxygen.exe"
       - "C:/Program Files/MySQL/MySQL Shell 8.0/bin/doxygen"
@@ -1949,6 +1978,9 @@ events:
       - "C:/Users/HP/.dotnet/tools/doxygen.com"
       - "C:/Users/HP/.dotnet/tools/doxygen.exe"
       - "C:/Users/HP/.dotnet/tools/doxygen"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/doxygen.com"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/doxygen.exe"
+      - "C:/Users/HP/AppData/Local/Google/Cloud SDK/google-cloud-sdk/bin/doxygen"
       - "C:/Program Files/bin/doxygen.com"
       - "C:/Program Files/bin/doxygen.exe"
       - "C:/Program Files/bin/doxygen"
@@ -2005,7 +2037,6 @@ events:
       ENV{PATH}:
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\debugCommand"
         - "c:\\Users\\HP\\AppData\\Roaming\\Code\\User\\globalStorage\\github.copilot-chat\\copilotCli"
-        - "C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code"
         - "C:\\Python314\\Scripts\\"
         - "C:\\Python314\\"
         - "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath"
@@ -2023,11 +2054,12 @@ events:
         - "C:\\Program Files\\Git\\cmd"
         - "C:\\Program Files\\CMake\\bin"
         - "C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\"
-        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
         - "C:\\Program Files\\nodejs\\"
         - "C:\\ProgramData\\chocolatey\\bin"
         - "C:\\Program Files\\cursor\\resources\\app\\bin"
         - "C:\\Program Files\\dotnet\\"
+        - "C:\\Program Files\\Cloudflare\\Cloudflare WARP\\"
+        - "C:\\Users\\HP\\.local\\bin"
         - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
         - "D:\\msys\\mingw64\\bin"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\"
@@ -2039,6 +2071,7 @@ events:
         - "C:\\Users\\HP\\AppData\\Roaming\\npm"
         - "C:\\Users\\HP\\AppData\\Local\\Programs\\Antigravity\\bin"
         - "C:\\Users\\HP\\.dotnet\\tools"
+        - "C:\\Users\\HP\\AppData\\Local\\Google\\Cloud SDK\\google-cloud-sdk\\bin"
       CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/Chaos_Engine"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "C:/Program Files"

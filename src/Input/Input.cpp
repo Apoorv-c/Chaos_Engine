@@ -19,6 +19,7 @@ static int ToGLFWKey(Key key) {
         case Key::X: return GLFW_KEY_X;
         case Key::F5: return GLFW_KEY_F5;
         case Key::F9: return GLFW_KEY_F9;
+        case Key::LEFT_ALT: return GLFW_KEY_LEFT_ALT;
     }
     return -1;
 }

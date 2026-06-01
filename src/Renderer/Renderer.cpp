@@ -19,6 +19,7 @@ static unsigned int s_FBO = 0;
 static unsigned int s_ColorTexture = 0;
 static int s_FBWidth = 1280;
 static int s_FBHeight = 720;
+static int s_SelectedEntity = -1;
 static unsigned int s_PickingFBO = 0;
 static unsigned int s_PickingTexture = 0;
 static unsigned int gridVAO = 0;
@@ -103,8 +104,9 @@ void Renderer::Init() {
     const char* fs = R"(
         #version 330 core
         out vec4 color;
+        uniform vec4 u_Color;
         void main() {
-            color = vec4(1.0, 0.5, 0.2, 1.0);
+            color = u_Color;
         }
     )";
 
@@ -248,8 +250,14 @@ void Renderer::PrepareShader() {
     s_Shader->Bind();
     s_Shader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
 }
-void Renderer::DrawTriangle(const glm::mat4& transform) {
+void Renderer::DrawTriangle(const glm::mat4& transform, bool selected) {
     s_Shader->SetMat4("u_Transform", transform);
+    if(selected){
+        s_Shader->SetFloat4("u_Color",{1.0f, 0.8f, 0.2f, 1.0f });
+    }
+    else{
+        s_Shader->SetFloat4("u_Color",{0.2f, 0.7f, 1.0f, 1.0f });
+    }
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
@@ -373,6 +381,16 @@ void Renderer::InitPickingFramebuffer(int width, int height)
 
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
+void Renderer::SetSelectedEntity(int entity)
+{
+    s_SelectedEntity = entity;
+}
+
+int Renderer::GetSelectedEntity()
+{
+    return s_SelectedEntity;
+}
+
 void Renderer::BindPickingFramebuffer()
 {
     glBindFramebuffer(GL_FRAMEBUFFER, s_PickingFBO);

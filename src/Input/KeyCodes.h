@@ -11,5 +11,6 @@ enum class Key{
     SPACE,
     X,
     F5,
-    F9
+    F9,
+    LEFT_ALT
 };
