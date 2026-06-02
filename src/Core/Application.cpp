@@ -23,6 +23,7 @@
 #include "Commands/SpawnCommand.h"
 #include "Commands/DestroyCommand.h"
 #include <memory>
+#include <filesystem>
 
 
 Window* g_MainWindow = nullptr;
@@ -54,6 +55,7 @@ void Application::Run() {
     static bool sceneHovered = false;   // updated each frame from previous frame's gizmo state
     static bool gizmoInUse  = false;    // previous-frame gizmo state
     static int selectedEntity = -1;
+    static std::filesystem::path currentDirectory = "D:/Chaos_Engine/Assets";
     while (!m_Window.ShouldClose()) {
         Time::Update();
 
@@ -457,6 +459,36 @@ void Application::Run() {
                     std::make_unique<DestroyCommand>(m_Scene, selectedEntity)
                 );
                 selectedEntity = -1;
+            }
+        }
+
+        ImGui::End();
+
+        ImGui::Begin("Assets");
+
+        ImGui::Text("Current Folder:");
+        ImGui::Text("%s", currentDirectory.string().c_str());
+
+        ImGui::Separator();
+
+        for (const auto& entry :
+            std::filesystem::directory_iterator(currentDirectory))
+        {
+            std::string name =
+                entry.path().filename().string();
+
+            if (entry.is_directory())
+            {
+                if (ImGui::Selectable(
+                    ("[DIR] " + name).c_str()))
+                {
+                    currentDirectory =
+                        entry.path();
+                }
+            }
+            else
+            {
+                ImGui::Text("%s", name.c_str());
             }
         }
 
