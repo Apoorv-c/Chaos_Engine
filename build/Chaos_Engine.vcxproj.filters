@@ -76,6 +76,9 @@
     <ClCompile Include="D:\Chaos_Engine\src\Commands\DestroyCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Renderer\Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Chaos_Engine\CMakeLists.txt" />

@@ -23,3 +23,4 @@ D:\Chaos_Engine\src\Commands\CommandManager.cpp;D:\Chaos_Engine\build\Chaos_Engi
 D:\Chaos_Engine\src\Commands\MoveCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\MoveCommand.obj
 D:\Chaos_Engine\src\Commands\SpawnCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\SpawnCommand.obj
 D:\Chaos_Engine\src\Commands\DestroyCommand.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\DestroyCommand.obj
+D:\Chaos_Engine\src\Renderer\Texture2D.cpp;D:\Chaos_Engine\build\Chaos_Engine.dir\Debug\Texture2D.obj

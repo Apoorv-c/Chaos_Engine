@@ -24,6 +24,7 @@
 #include "Commands/DestroyCommand.h"
 #include <memory>
 #include <filesystem>
+#include "Renderer/Texture2D.h"
 
 
 Window* g_MainWindow = nullptr;
@@ -55,6 +56,14 @@ void Application::Run() {
     static bool sceneHovered = false;   // updated each frame from previous frame's gizmo state
     static bool gizmoInUse  = false;    // previous-frame gizmo state
     static int selectedEntity = -1;
+    static Texture2D folderIcon(
+        "D:/Chaos_Engine/Assets/Editor/folder.png");
+
+    static Texture2D fileIcon(
+        "D:/Chaos_Engine/Assets/Editor/file.png");
+
+    static Texture2D imageIcon(
+        "D:/Chaos_Engine/Assets/Editor/image.png");
     static std::filesystem::path currentDirectory = "D:/Chaos_Engine/Assets";
     while (!m_Window.ShouldClose()) {
         Time::Update();
@@ -465,12 +474,20 @@ void Application::Run() {
         ImGui::End();
 
         ImGui::Begin("Assets");
-
         ImGui::Text("Current Folder:");
-        ImGui::Text("%s", currentDirectory.string().c_str());
+        ImGui::Text("%s", 
+            currentDirectory.string().c_str());
 
         ImGui::Separator();
+        if (currentDirectory != "Assets")
 
+        {
+        if (ImGui::Button("<- Back"))
+        {
+            currentDirectory =
+                currentDirectory.parent_path();
+        }
+    }
         for (const auto& entry :
             std::filesystem::directory_iterator(currentDirectory))
         {
@@ -479,15 +496,36 @@ void Application::Run() {
 
             if (entry.is_directory())
             {
-                if (ImGui::Selectable(
-                    ("[DIR] " + name).c_str()))
+                ImGui::Image(
+                    (void*)(intptr_t)folderIcon.GetID(),
+                    ImVec2(16,16));
+
+                ImGui::SameLine();
+
+                if (ImGui::Selectable(name.c_str()))
                 {
-                    currentDirectory =
-                        entry.path();
+                    currentDirectory = entry.path();
                 }
             }
             else
             {
+                Texture2D* icon = &fileIcon;
+
+                std::string ext =
+                    entry.path().extension().string();
+
+                if (ext == ".png" ||
+                    ext == ".jpg")
+                {
+                    icon = &imageIcon;
+                }
+
+                ImGui::Image(
+                    (void*)(intptr_t)icon->GetID(),
+                    ImVec2(16,16));
+
+                ImGui::SameLine();
+
                 ImGui::Text("%s", name.c_str());
             }
         }

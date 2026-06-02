@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(external/glfw)
-
+include_directories(external/stb)
 add_executable(Chaos_Engine
     src/main.cpp
     src/Core/Application.cpp
@@ -32,6 +32,7 @@ add_executable(Chaos_Engine
     src/Commands/MoveCommand.cpp
     src/Commands/SpawnCommand.cpp
     src/Commands/DestroyCommand.cpp
+    src/Renderer/Texture2D.cpp
 
 
 
