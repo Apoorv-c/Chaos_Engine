@@ -1,5 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
+#include <string>
 
 struct TransformComponent {
     glm::vec3 Position {0.0f, 0.0f, 0.0f};
@@ -10,4 +11,8 @@ struct TransformComponent {
 };
 struct RenderComponent {
     bool Visible = true;
+};
+struct TextureComponent
+{
+    std::string Path;
 };

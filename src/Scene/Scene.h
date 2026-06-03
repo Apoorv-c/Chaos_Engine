@@ -27,11 +27,14 @@ public:
     const std::vector<RenderComponent>& GetRenderables() const { return m_Renderables; }
     void DestroyEntity(Entity e);
     void RemoveFromFreeList(Entity e);
+    TextureComponent& GetTexture(Entity entity);
+    const std::vector<TextureComponent>& GetTextures() const { return m_Textures; }
 
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;
     std::vector<RenderComponent> m_Renderables;
+    std::vector<TextureComponent> m_Textures;
     float m_Rotation = 0.0f;
     std::queue<Entity> m_FreeEntities;
 };

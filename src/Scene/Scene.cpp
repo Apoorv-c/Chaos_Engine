@@ -8,6 +8,7 @@ Scene::Scene() {
     m_Entities.reserve(10000);
     m_Transforms.reserve(10000);
     m_Renderables.reserve(10000);
+    m_Textures.reserve(10000);
     Entity left = CreateEntity();
     Entity middle = CreateEntity();
     Entity right = CreateEntity();
@@ -21,6 +22,7 @@ void Scene::Clear() {
     m_Entities.clear();
     m_Transforms.clear();
     m_Renderables.clear();
+    m_Textures.clear();
 
     while (!m_FreeEntities.empty())
         m_FreeEntities.pop();
@@ -89,6 +91,7 @@ Entity Scene::CreateEntity() {
 
     m_Transforms.emplace_back();
     m_Renderables.emplace_back();
+    m_Textures.emplace_back();
 
     return e;
 }
@@ -99,6 +102,7 @@ Entity Scene::SpawnEntity(const glm::vec3& position) {
     GetRender(e).Visible = true;
     return e;
 }
+
 TransformComponent& Scene::GetTransform(Entity e) {
     return m_Transforms[e];
 }
@@ -106,12 +110,19 @@ TransformComponent& Scene::GetTransform(Entity e) {
 RenderComponent& Scene::GetRender(Entity e) {
     return m_Renderables[e];
 }
+
 void Scene::DestroyEntity(Entity e) {
     if (e >= m_Entities.size())
         return;
 
     m_Renderables[e].Visible = false;
+    m_Textures[e].Path.clear();
     m_FreeEntities.push(e);
+}
+
+TextureComponent& Scene::GetTexture(Entity entity)
+{
+    return m_Textures[entity];
 }
 
 void Scene::RemoveFromFreeList(Entity e) {

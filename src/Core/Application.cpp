@@ -199,6 +199,25 @@ void Application::Run() {
             ImVec2(1,0)
         );
 
+        // Drop target on the scene viewport image
+        if (ImGui::BeginDragDropTarget())
+        {
+            if (const ImGuiPayload* payload =
+                ImGui::AcceptDragDropPayload("ASSET_PATH"))
+            {
+                const char* droppedPath =
+                    (const char*)payload->Data;
+
+                if (selectedEntity >= 0)
+                {
+                    m_Scene->GetTexture(selectedEntity).Path =
+                        droppedPath;
+                }
+            }
+
+            ImGui::EndDragDropTarget();
+        }
+
         // --------------------
         // GIZMO SETUP
         // --------------------
@@ -460,6 +479,31 @@ void Application::Run() {
             ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
             ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
 
+            
+            auto& texture =
+                m_Scene->GetTexture(selectedEntity);
+
+            ImGui::Separator();
+
+            ImGui::Text("Texture");
+
+            ImGui::TextWrapped(
+                "%s",
+                texture.Path.empty() ? "(none - drag a texture here)" : texture.Path.c_str()
+            );
+
+            // Drop target on the texture label in Inspector
+            if (ImGui::BeginDragDropTarget())
+            {
+                if (const ImGuiPayload* payload =
+                    ImGui::AcceptDragDropPayload("ASSET_PATH"))
+                {
+                    const char* droppedPath =
+                        (const char*)payload->Data;
+                    texture.Path = droppedPath;
+                }
+                ImGui::EndDragDropTarget();
+            }
             ImGui::Separator();
 
             if (ImGui::Button("Delete"))
@@ -488,6 +532,7 @@ void Application::Run() {
                 currentDirectory.parent_path();
         }
     }
+        try {
         for (const auto& entry :
             std::filesystem::directory_iterator(currentDirectory))
         {
@@ -526,8 +571,27 @@ void Application::Run() {
 
                 ImGui::SameLine();
 
-                ImGui::Text("%s", name.c_str());
+                ImGui::Selectable(name.c_str());
+
+                if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
+                {
+                    std::string pathStr =
+                        entry.path().string();
+
+                    ImGui::SetDragDropPayload(
+                        "ASSET_PATH",
+                        pathStr.c_str(),
+                        pathStr.size() + 1
+                    );
+
+                    ImGui::Text("%s", name.c_str());
+
+                    ImGui::EndDragDropSource();
+                }
             }
+        }
+        } catch (const std::filesystem::filesystem_error&) {
+            ImGui::Text("Error reading directory");
         }
 
         ImGui::End();

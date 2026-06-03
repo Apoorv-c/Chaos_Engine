@@ -19,4 +19,5 @@ private:
     Entity m_EntityID;
     TransformComponent m_SavedTransform;
     RenderComponent m_SavedRender;
+    TextureComponent m_SavedTexture;
 };
