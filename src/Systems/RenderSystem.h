@@ -8,6 +8,7 @@ public:
     static void Render(
         const std::vector<Entity>& entities,
         const std::vector<TransformComponent>& transforms,
-        const std::vector<RenderComponent>& renderables
+        const std::vector<RenderComponent>& renderables,
+        const std::vector<TextureComponent>& textures
     );
 };

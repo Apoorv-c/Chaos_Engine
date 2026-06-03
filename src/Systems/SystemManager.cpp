@@ -14,6 +14,7 @@ void SystemManager::Render(Scene& scene) {
     RenderSystem::Render(
         scene.GetEntities(),
         scene.GetTransforms(),
-        scene.GetRenderables()
+        scene.GetRenderables(),
+        scene.GetTextures()
     );
 }

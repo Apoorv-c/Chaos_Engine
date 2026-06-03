@@ -76,9 +76,16 @@ void Renderer::Init() {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     float vertices[] = {
-        -0.5f, -0.5f,
-         0.5f, -0.5f,
-         0.0f,  0.5f
+
+        // positions      // tex coords
+
+        -0.5f, -0.5f, 0.0f, 0.0f,
+        0.5f, -0.5f, 1.0f, 0.0f,
+        0.5f,  0.5f, 1.0f, 1.0f,
+
+        -0.5f, -0.5f, 0.0f, 0.0f,
+        0.5f,  0.5f, 1.0f, 1.0f,
+        -0.5f,  0.5f, 0.0f, 1.0f
     };
 
     unsigned int VBO;
@@ -90,23 +97,44 @@ void Renderer::Init() {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
+    glVertexAttribPointer(
+        0, 
+        2, 
+        GL_FLOAT, 
+        GL_FALSE, 
+        4 * sizeof(float), 
+        (void*)0
+    );
+    glEnableVertexAttribArray(1);
+    glVertexAttribPointer(
+        1,
+        2,
+        GL_FLOAT,
+        GL_FALSE,
+        4 * sizeof(float),
+        (void*)(2 * sizeof(float))
+    );
     const char* vs = R"(
         #version 330 core
         layout(location = 0) in vec2 aPos;
+        layout(location = 1) in vec2 aTexCoord;
         uniform mat4 u_ViewProjection;
         uniform mat4 u_Transform;
+        out vec2 v_TexCoord;
         void main() {
+            v_TexCoord = aTexCoord;
             gl_Position = u_ViewProjection * u_Transform * vec4(aPos, 0.0, 1.0);
+
         }
     )";
 
     const char* fs = R"(
         #version 330 core
         out vec4 color;
-        uniform vec4 u_Color;
+        in vec2 v_TexCoord;
+        uniform sampler2D u_Texture;
         void main() {
-            color = u_Color;
+            color = texture(u_Texture, v_TexCoord);
         }
     )";
 
@@ -250,16 +278,27 @@ void Renderer::PrepareShader() {
     s_Shader->Bind();
     s_Shader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
 }
-void Renderer::DrawTriangle(const glm::mat4& transform, bool selected) {
-    s_Shader->SetMat4("u_Transform", transform);
-    if(selected){
-        s_Shader->SetFloat4("u_Color",{1.0f, 0.8f, 0.2f, 1.0f });
-    }
-    else{
-        s_Shader->SetFloat4("u_Color",{0.2f, 0.7f, 1.0f, 1.0f });
-    }
+void Renderer::DrawTriangle(
+    const glm::mat4& transform,
+    unsigned int textureID)
+{
+    s_Shader->Bind();
+    glActiveTexture(GL_TEXTURE0);
+    s_Shader->SetInt("u_Texture", 0);
+
+    s_Shader->SetMat4(
+        "u_Transform",
+        transform
+    );
+
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+
+    glBindTexture(
+        GL_TEXTURE_2D,
+        textureID
+    );
+
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 Camera* Renderer::GetCamera() {
     return s_Camera;

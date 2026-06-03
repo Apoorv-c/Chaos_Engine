@@ -1,5 +1,5 @@
 #include "Renderer/Texture2D.h"
-
+#include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -10,11 +10,11 @@ Texture2D::Texture2D(const std::string& path)
     stbi_set_flip_vertically_on_load(1);
 
     unsigned char* data =
-        stbi_load(path.c_str(),
-                  &width,
-                  &height,
-                  &channels,
-                  4);
+        stbi_load(path.c_str(), &width, &height, &channels, 4);
+        if (data)
+            std::cout << "TEXTURE LOADED\n";
+        else
+            std::cout << "FAILED TO LOAD\n";
 
     glGenTextures(1, &m_ID);
     glBindTexture(GL_TEXTURE_2D, m_ID);

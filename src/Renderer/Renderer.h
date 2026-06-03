@@ -14,7 +14,10 @@ public:
     static void PrepareShader();
     static void SetEntityID(int id);
     static void PreparePickingShader();
-    static void DrawTriangle(const glm::mat4& transform, bool selected = false);
+    static void DrawTriangle(
+    const glm::mat4& transform,
+    unsigned int textureID = 0
+    );
     static void InitFramebuffer(int width, int height);
     static void ResizeFramebuffer(int width, int height);
     static unsigned int GetFramebufferTexture();
