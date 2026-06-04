@@ -189,19 +189,59 @@ void Renderer::Init() {
 
     gridShader = CompileGridShader(gridVS, gridFS);
 
+    // Create empty VAO/VBO — vertices filled by UpdateGrid() each frame
+    glGenVertexArrays(1, &gridVAO);
+    glGenBuffers(1, &gridVBO);
+    glBindVertexArray(gridVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, gridVBO);
+
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2 * sizeof(float)));
+    glEnableVertexAttribArray(1);
+
+}
+
+// ── Adaptive grid spacing ────────────────────────────────────────────
+static float s_LastGridZoom = -1.0f;
+
+void Renderer::UpdateGrid(float zoom)
+{
+    // Only rebuild when zoom actually changed
+    if (std::abs(zoom - s_LastGridZoom) < 0.0001f) return;
+    s_LastGridZoom = zoom;
+
     grid.clear();
 
-    // Grid spans a fixed world-size; camera pan/zoom moves it via u_ViewProjection.
-    const float halfSize = 20.0f;
-    const float majorStep = 1.0f;    // darker lines every 1 unit
-    const float minorStep = 0.25f;   // lighter lines every 0.25 unit
-    const int majorDiv = (int)(majorStep / minorStep); // expected 4
+    // ── Compute adaptive step sizes ──────────────────────────────────
+    // Visible world width ≈ 3.2 * zoom (from the -1.6..1.6 ortho projection).
+    // We want ~8-12 major grid lines across the viewport.
+    float worldWidth = 3.2f * zoom;
+    float rawStep = worldWidth / 10.0f;
 
-    const glm::vec4 minorColor(0.80f, 0.80f, 0.80f, 0.45f);
-    const glm::vec4 majorColor(0.62f, 0.62f, 0.62f, 0.65f);
-    const glm::vec4 axisColor(0.52f, 0.52f, 0.52f, 0.85f);
+    // Snap to "nice" values: ..., 0.1, 0.25, 0.5, 1, 2.5, 5, 10, 25, ...
+    float magnitude = powf(10.0f, floorf(log10f(rawStep)));
+    float residual  = rawStep / magnitude;
 
-    const int minorCount = (int)round(halfSize / minorStep);
+    float majorStep;
+    if      (residual <= 1.5f) majorStep = 1.0f * magnitude;
+    else if (residual <= 3.5f) majorStep = 2.5f * magnitude;
+    else if (residual <= 7.5f) majorStep = 5.0f * magnitude;
+    else                       majorStep = 10.0f * magnitude;
+
+    float minorStep = majorStep / 5.0f;
+    int   majorDiv  = 5;    // every 5th minor line is a major line
+
+    // Cover enough world space around the viewport
+    float halfSize   = majorStep * 25.0f;
+    int   minorCount = (int)(halfSize / minorStep);
+
+    // ── Colors ───────────────────────────────────────────────────────
+    const glm::vec4 minorColor(0.25f, 0.25f, 0.25f, 0.35f);
+    const glm::vec4 majorColor(0.35f, 0.35f, 0.35f, 0.55f);
+    const glm::vec4 xAxisColor(0.85f, 0.15f, 0.15f, 0.90f);
+    const glm::vec4 yAxisColor(0.15f, 0.75f, 0.15f, 0.90f);
 
     auto pushVertex = [&](float x, float y, const glm::vec4& c) {
         grid.push_back(x);
@@ -212,37 +252,35 @@ void Renderer::Init() {
         grid.push_back(c.a);
     };
 
-    // Vertical lines (X constant)
+    // Vertical lines (X constant) — skip axis, drawn on top later
     for (int i = -minorCount; i <= minorCount; i++) {
+        if (i == 0) continue;
         float x = i * minorStep;
-        glm::vec4 c =
-            (i == 0) ? axisColor : ((i % majorDiv) == 0 ? majorColor : minorColor);
+        glm::vec4 c = (i % majorDiv) == 0 ? majorColor : minorColor;
         pushVertex(x, -halfSize, c);
         pushVertex(x,  halfSize, c);
     }
 
-    // Horizontal lines (Y constant)
+    // Horizontal lines (Y constant) — skip axis, drawn on top later
     for (int i = -minorCount; i <= minorCount; i++) {
+        if (i == 0) continue;
         float y = i * minorStep;
-        glm::vec4 c =
-            (i == 0) ? axisColor : ((i % majorDiv) == 0 ? majorColor : minorColor);
+        glm::vec4 c = (i % majorDiv) == 0 ? majorColor : minorColor;
         pushVertex(-halfSize, y, c);
         pushVertex( halfSize, y, c);
     }
 
-    glGenVertexArrays(1, &gridVAO);
-    glGenBuffers(1, &gridVBO);
-    glBindVertexArray(gridVAO);
+    // Axes LAST (on top)
+    pushVertex(0.0f, -halfSize, yAxisColor);   // Y axis — GREEN
+    pushVertex(0.0f,  halfSize, yAxisColor);
+    pushVertex(-halfSize, 0.0f, xAxisColor);   // X axis — RED
+    pushVertex( halfSize, 0.0f, xAxisColor);
+
+    // Upload to GPU
     glBindBuffer(GL_ARRAY_BUFFER, gridVBO);
-    glBufferData(GL_ARRAY_BUFFER, grid.size() * sizeof(float), grid.data(), GL_STATIC_DRAW);
-
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(2 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-
+    glBufferData(GL_ARRAY_BUFFER, grid.size() * sizeof(float), grid.data(), GL_DYNAMIC_DRAW);
 }
+
 void Renderer::DrawGrid()
 {
     if (gridShader == 0 || grid.empty())
@@ -259,7 +297,7 @@ void Renderer::DrawGrid()
     );
 
     glBindVertexArray(gridVAO);
-    const int vertexCount = (int)(grid.size() / 6); // 6 floats per vertex
+    const int vertexCount = (int)(grid.size() / 6);
     glDrawArrays(GL_LINES, 0, vertexCount);
 }
 

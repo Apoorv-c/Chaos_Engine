@@ -28,6 +28,16 @@
 
 
 Window* g_MainWindow = nullptr;
+static float g_ScrollOffset = 0.0f;
+
+void ScrollCallback(
+    GLFWwindow* window,
+    double xOffset,
+    double yOffset)
+{
+    g_ScrollOffset =
+        (float)yOffset;
+}
 
 Application::Application()
     : m_Window(1280, 720, "Chaos Engine") {
@@ -38,6 +48,13 @@ Application::Application()
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     ImGui_ImplGlfw_InitForOpenGL(g_MainWindow->GetNativeWindow(), true);
     ImGui_ImplOpenGL3_Init("#version 330");
+
+    // Register scroll callback AFTER ImGui init so it doesn't get overwritten
+    glfwSetScrollCallback(
+        g_MainWindow->GetNativeWindow(),
+        ScrollCallback
+    );
+
     Log::Init();
     Log::Info("Engine starting...");
     Time::Init();
@@ -108,6 +125,11 @@ void Application::Run() {
         Camera* cam = Renderer::GetCamera();
         static glm::vec3 camPos = {0.0f, 0.0f, 0.0f};
         static float zoom = 1.0f;
+        static float targetZoom = 1.0f;
+        static float scrollDelta = 0.0f;
+        float gridSize = 1.0f;
+        static ImVec2 lastMousePos = {0,0};
+        static glm::vec3 targetCamPos = camPos;
 
         bool altPressed  = Input::IsKeyPressed(Key::LEFT_ALT);
         bool leftMouse   = glfwGetMouseButton(g_MainWindow->GetNativeWindow(), GLFW_MOUSE_BUTTON_LEFT)  == GLFW_PRESS;
@@ -116,12 +138,50 @@ void Application::Run() {
         // WASD only when scene is hovered and ALT is NOT held
         if (sceneHovered && !altPressed) {
             float speed = 1.5f * Time::DeltaTime();
-            if (Input::IsKeyPressed(Key::W)) camPos.y += speed;
-            if (Input::IsKeyPressed(Key::S)) camPos.y -= speed;
-            if (Input::IsKeyPressed(Key::A)) camPos.x -= speed;
-            if (Input::IsKeyPressed(Key::D)) camPos.x += speed;
+            if (Input::IsKeyPressed(Key::W)) targetCamPos.y += speed;
+            if (Input::IsKeyPressed(Key::S)) targetCamPos.y -= speed;
+            if (Input::IsKeyPressed(Key::A)) targetCamPos.x -= speed;
+            if (Input::IsKeyPressed(Key::D)) targetCamPos.x += speed;
+        }
+        Scene* activeScene =  m_IsPlaying
+            ? m_RuntimeScene
+            : m_Scene;
+
+        if (Input::IsKeyPressed(Key::F))
+        {
+            if (selectedEntity >= 0)
+            {
+                targetCamPos =
+                    activeScene
+                    ->GetTransform(selectedEntity)
+                    .Position;
+            }
+        }
+        bool alt =
+            Input::IsKeyPressed(Key::LEFT_ALT);
+
+        ImVec2 currentMousePos = {(float)mouseX, (float)mouseY};
+
+        if (alt && ImGui::IsMouseDragging(2))
+        {
+            ImVec2 delta =
+            {
+                currentMousePos.x - lastMousePos.x,
+                currentMousePos.y - lastMousePos.y
+            };
+
+            targetCamPos.x -=
+                delta.x
+                * zoom
+                * 0.0015f;
+
+            targetCamPos.y +=
+                delta.y
+                * zoom
+                * 0.0015f;
         }
 
+        lastMousePos = currentMousePos;
         // Undo / Redo  —  one-shot (no repeat every frame while key held)
         static bool undoPressed = false;
         static bool redoPressed = false;
@@ -149,21 +209,22 @@ void Application::Run() {
             if (rightMouse)
             {
                 // Zoom: drag RIGHT = zoom in, drag LEFT = zoom out (no reverse)
-                zoom *= (1.0f - (float)deltaX * 0.01f);
-                if (zoom < 0.2f) zoom = 0.2f;
-                if (zoom > 5.0f) zoom = 5.0f;
+                targetZoom *= (1.0f - (float)deltaX * 0.01f);
             }
         }
+        camPos +=
+            (targetCamPos - camPos)
+            * 8.0f
+            * Time::DeltaTime();
         cam->SetPosition(camPos);
-        Scene* activeScene =  m_IsPlaying
-            ? m_RuntimeScene
-            : m_Scene;
 
         Renderer::BeginFrame();
         
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+        ImVec2 mousePos =
+            ImGui::GetMousePos();
         ImGuiID dockspace_id = ImGui::GetID("MainDockSpace");
         ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
         
@@ -374,19 +435,27 @@ void Application::Run() {
         angle += Time::DeltaTime();
 
         
+        targetZoom -= g_ScrollOffset * 0.2f;
+        g_ScrollOffset = 0.0f;
 
-        if (Input::IsKeyPressed(Key::Q))
-            zoom += Time::DeltaTime();
+        // Clamp BEFORE interpolation so zoom never goes out of range
+        if (targetZoom < 0.2f) targetZoom = 0.2f;
+        if (targetZoom > 5.0f) targetZoom = 5.0f;
 
-        if (Input::IsKeyPressed(Key::E))
-            zoom -= Time::DeltaTime();
-
+        zoom += (targetZoom - zoom) * 8.0f * Time::DeltaTime();
+        if (zoom < 0.5f)
+            gridSize = 0.25f;
+        else if (zoom < 1.5f)
+            gridSize = 0.5f;
+        else if (zoom < 3.0f)
+            gridSize = 1.0f;
+        else
+            gridSize = 2.0f;
         Renderer::GetCamera()->SetProjection(
             -1.6f * zoom, 1.6f * zoom,
             -0.9f * zoom, 0.9f * zoom
         );
         static bool destroyPressed = false;
-
         if(ImGui::BeginMainMenuBar()){
             if(ImGui::BeginMenu("File")){
                 if(ImGui::MenuItem("Save"))
@@ -693,7 +762,7 @@ void Application::Run() {
             timer = 0.0f;
         }
 
-
+        lastMousePos = mousePos;
         m_Window.Update();
         if(Input::IsKeyPressed(Key::ESCAPE)) {
             Log::Info("Escape key pressed - closing engine");

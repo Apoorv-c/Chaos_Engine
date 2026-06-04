@@ -23,6 +23,8 @@ static int ToGLFWKey(Key key) {
         case Key::LEFT_CONTROL: return GLFW_KEY_LEFT_CONTROL;
         case Key::Z: return GLFW_KEY_Z;
         case Key::Y: return GLFW_KEY_Y;
+        case Key::F: return GLFW_KEY_F;
+
     }
     return -1;
 }
