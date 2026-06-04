@@ -314,6 +314,12 @@ void Renderer::PreparePickingShader() {
     s_PickingShader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
 }
 
+void Renderer::DrawPickingTriangle(const glm::mat4& transform) {
+    s_PickingShader->SetMat4("u_Transform", transform);
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
 void Renderer::InitFramebuffer(int width, int height)
 {
     s_FBWidth = width;

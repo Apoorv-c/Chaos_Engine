@@ -27,6 +27,7 @@ public:
     static void BindPickingFramebuffer();
     static int ReadEntityID(int mouseX, int mouseY);
     static void DrawGrid();
+    static void DrawPickingTriangle(const glm::mat4& transform);
     static void SetSelectedEntity(int entity);
     static int GetSelectedEntity();
 };

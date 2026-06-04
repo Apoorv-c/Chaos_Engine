@@ -8,6 +8,8 @@ class Application {
 public:
     Application();
     void Run();
+    bool m_IsPlaying = false;
+    Scene* m_RuntimeScene = nullptr;
 
 private:
     Window m_Window;

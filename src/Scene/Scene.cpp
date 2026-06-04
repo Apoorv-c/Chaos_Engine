@@ -136,3 +136,12 @@ void Scene::RemoveFromFreeList(Entity e) {
     }
     m_FreeEntities = temp;
 }
+
+Scene::Scene(const Scene& other)
+{
+    m_Entities     = other.m_Entities;
+    m_Transforms   = other.m_Transforms;
+    m_Renderables  = other.m_Renderables;
+    m_Textures     = other.m_Textures;
+    m_FreeEntities = other.m_FreeEntities;
+}

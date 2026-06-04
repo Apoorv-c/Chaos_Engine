@@ -155,7 +155,9 @@ void Application::Run() {
             }
         }
         cam->SetPosition(camPos);
-        SystemManager::Update(*m_Scene, Time::DeltaTime());
+        Scene* activeScene =  m_IsPlaying
+            ? m_RuntimeScene
+            : m_Scene;
 
         Renderer::BeginFrame();
         
@@ -185,7 +187,7 @@ void Application::Run() {
         Renderer::DrawGrid();
         // Grid uses its own shader; restore the entity shader before drawing entities.
         Renderer::PrepareShader();
-        SystemManager::Render(*m_Scene);
+        SystemManager::Render(*activeScene);
 
         Renderer::UnbindFramebuffer();
 
@@ -210,7 +212,7 @@ void Application::Run() {
 
                 if (selectedEntity >= 0)
                 {
-                    m_Scene->GetTexture(selectedEntity).Path =
+                    activeScene->GetTexture(selectedEntity).Path =
                         droppedPath;
                 }
             }
@@ -247,7 +249,7 @@ void Application::Run() {
 
         if (selectedEntity >= 0)
         {
-            auto& transform = m_Scene->GetTransform(selectedEntity);
+            auto& transform = activeScene->GetTransform(selectedEntity);
             glm::mat4 transformMatrix = transform.GetMatrix();
             Camera* cam = Renderer::GetCamera();
 
@@ -301,7 +303,7 @@ void Application::Run() {
                 {
                     CommandManager::ExecuteCommand(
                         std::make_unique<MoveCommand>(
-                            m_Scene, selectedEntity, oldPosition, newPos
+                            activeScene, selectedEntity, oldPosition, newPos
                         )
                     );
                 }
@@ -328,14 +330,14 @@ void Application::Run() {
 
         Renderer::PreparePickingShader();
 
-        const auto& pickEntities    = m_Scene->GetEntities();
-        const auto& pickRenderables = m_Scene->GetRenderables();
+        const auto& pickEntities    = activeScene->GetEntities();
+        const auto& pickRenderables = activeScene->GetRenderables();
 
         for (int i = 0; i < (int)pickEntities.size(); i++)
         {
             if (!pickRenderables[i].Visible) continue;
             Renderer::SetEntityID(i);
-            Renderer::DrawTriangle(m_Scene->GetTransform(i).GetMatrix());
+            Renderer::DrawPickingTriangle(activeScene->GetTransform(i).GetMatrix());
         }
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -362,7 +364,7 @@ void Application::Run() {
             {
                 selectedEntity = id;
                 Renderer::SetSelectedEntity(id);
-                oldPosition = m_Scene->GetTransform(id).Position; // reset undo baseline
+                oldPosition = activeScene->GetTransform(id).Position; // reset undo baseline
             }
         }
 
@@ -402,17 +404,17 @@ void Application::Run() {
             if (!destroyPressed) {
                 destroyPressed = true;
 
-                const auto& entities = m_Scene->GetEntities();
+                const auto& entities = activeScene->GetEntities();
                 int lastVisible = -1;
                 for (int i = (int)entities.size() - 1; i >= 0; i--) {
-                    if (m_Scene->GetRender(i).Visible) {
+                    if (activeScene->GetRender(i).Visible) {
                         lastVisible = i;
                         break;
                     }
                 }
                 if (lastVisible >= 0) {
                     CommandManager::ExecuteCommand(
-                        std::make_unique<DestroyCommand>(m_Scene, lastVisible)
+                        std::make_unique<DestroyCommand>(activeScene, lastVisible)
                     );
                     if (selectedEntity == lastVisible) {
                         selectedEntity = -1;
@@ -454,11 +456,11 @@ void Application::Run() {
         ImGui::Text("Entities");
         ImGui::Separator();
 
-        const auto& entities = m_Scene->GetEntities();
+        const auto& entities = activeScene->GetEntities();
 
         for (int i = 0; i < (int)entities.size(); i++)
         {
-            if (!m_Scene->GetRender(i).Visible)
+            if (!activeScene->GetRender(i).Visible)
                 continue;
 
             std::string label = "Entity " + std::to_string(i);
@@ -471,9 +473,9 @@ void Application::Run() {
 
         ImGui::Begin("Inspector");
 
-        if (selectedEntity >= 0 && selectedEntity < (int)m_Scene->GetEntities().size())
+        if (selectedEntity >= 0 && selectedEntity < (int)activeScene->GetEntities().size())
         {
-            auto& transform = m_Scene->GetTransform(selectedEntity);
+            auto& transform = activeScene->GetTransform(selectedEntity);
             glm::mat4 transformMatrix = transform.GetMatrix();
             ImGui::Text("Transform");
             ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
@@ -481,7 +483,7 @@ void Application::Run() {
 
             
             auto& texture =
-                m_Scene->GetTexture(selectedEntity);
+                activeScene->GetTexture(selectedEntity);
 
             ImGui::Separator();
 
@@ -509,7 +511,7 @@ void Application::Run() {
             if (ImGui::Button("Delete"))
             {
                 CommandManager::ExecuteCommand(
-                    std::make_unique<DestroyCommand>(m_Scene, selectedEntity)
+                    std::make_unique<DestroyCommand>(activeScene, selectedEntity)
                 );
                 selectedEntity = -1;
             }
@@ -599,7 +601,7 @@ void Application::Run() {
         ImGui::Begin("Engine");
 
         ImGui::Text("FPS: %.1f", 1.0f / Time::DeltaTime());
-        ImGui::Text("Entities: %d", (int)m_Scene->GetEntities().size());
+        ImGui::Text("Entities: %d", (int)activeScene->GetEntities().size());
 
         ImGui::Separator();
 
@@ -609,7 +611,7 @@ void Application::Run() {
             float x = ((rand() % 200) - 100) / 100.0f;
             float y = ((rand() % 200) - 100) / 100.0f;
             CommandManager::ExecuteCommand(
-                std::make_unique<SpawnCommand>(m_Scene, glm::vec3{x, y, 0.0f})
+                std::make_unique<SpawnCommand>(activeScene, glm::vec3{x, y, 0.0f})
             );
         }
 
@@ -649,6 +651,27 @@ void Application::Run() {
         if (ImGui::Checkbox("VSync", &vsync))
             glfwSwapInterval(vsync ? 1 : 0);
 
+        ImGui::Separator();
+
+        if (!m_IsPlaying)
+        {
+            if (ImGui::Button("Play"))
+            {
+                m_IsPlaying = true;
+                m_RuntimeScene = new Scene(*m_Scene);
+            }
+        }
+        else
+        {
+            if (ImGui::Button("Stop"))
+            {
+                m_IsPlaying = false;
+                selectedEntity = -1;
+                delete m_RuntimeScene;
+                m_RuntimeScene = nullptr;
+            }
+        }
+
         ImGui::End();
 
         ImGui::Render();
@@ -662,13 +685,14 @@ void Application::Run() {
             std::string title =
                 "Chaos Engine | FPS: " + std::to_string((int)fps) +
                 " | Frame: " + std::to_string(frameTime) + " ms" +
-                " | Entities: " + std::to_string(m_Scene->GetEntities().size());
+                " | Entities: " + std::to_string(activeScene->GetEntities().size());
 
             glfwSetWindowTitle(g_MainWindow->GetNativeWindow(), title.c_str());
 
             frames = 0;
             timer = 0.0f;
         }
+
 
         m_Window.Update();
         if(Input::IsKeyPressed(Key::ESCAPE)) {
