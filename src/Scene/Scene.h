@@ -30,6 +30,13 @@ public:
     TextureComponent& GetTexture(Entity entity);
     const std::vector<TextureComponent>& GetTextures() const { return m_Textures; }
     Scene(const Scene& other);
+    void SavePrefab(
+        int entity,
+        const std::string& path
+    );
+    void LoadPrefab(
+        const std::string& path
+    );
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;

@@ -16,5 +16,8 @@ enum class Key{
     LEFT_CONTROL,
     Z,
     Y,
-    F
+    F,
+    R,
+    T,
+    L
 };

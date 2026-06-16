@@ -24,6 +24,9 @@ static int ToGLFWKey(Key key) {
         case Key::Z: return GLFW_KEY_Z;
         case Key::Y: return GLFW_KEY_Y;
         case Key::F: return GLFW_KEY_F;
+        case Key::R: return GLFW_KEY_R;
+        case Key::T: return GLFW_KEY_T;
+        case Key::L: return GLFW_KEY_L;
 
     }
     return -1;

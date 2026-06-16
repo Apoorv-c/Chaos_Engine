@@ -145,3 +145,72 @@ Scene::Scene(const Scene& other)
     m_Textures     = other.m_Textures;
     m_FreeEntities = other.m_FreeEntities;
 }
+void Scene::SavePrefab(
+    int entity,
+    const std::string& path)
+{
+    std::ofstream out(path);
+
+    if (!out.is_open())
+        return;
+
+    auto& transform =
+        m_Transforms[entity];
+
+    auto& render =
+        m_Renderables[entity];
+
+    auto& texture =
+        m_Textures[entity];
+
+    out <<
+        transform.Position.x << " "
+        << transform.Position.y << " "
+        << transform.Position.z << "\n";
+
+    out <<
+        transform.Rotation << "\n";
+
+    out <<
+        texture.Path << "\n";
+
+    out.close();
+}
+
+void Scene::LoadPrefab(
+    const std::string& path)
+{
+    std::ifstream in(path);
+
+    if (!in.is_open())
+        return;
+
+    glm::vec3 pos;
+    float rotation;
+
+    std::string texturePath;
+
+    in >>
+        pos.x >>
+        pos.y >>
+        pos.z;
+
+    in >> rotation;
+
+    in.ignore();
+
+    std::getline(in, texturePath);
+
+    Entity entity =
+        SpawnEntity(pos);
+
+    int index =
+        (int)m_Entities.size() - 1;
+    m_Transforms[index]
+        .Rotation = rotation;
+
+    m_Textures[index]
+        .Path = texturePath;
+
+    in.close();
+}

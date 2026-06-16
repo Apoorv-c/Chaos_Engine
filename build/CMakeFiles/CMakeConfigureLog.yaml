@@ -88,7 +88,7 @@ events:
       The output was:
       0
       MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-      Build started 02-06-2026 18:10:01.
+      Build started 13-06-2026 16:28:36.
       
       Project "D:\\Chaos_Engine\\build\\CMakeFiles\\4.2.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -117,7 +117,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.53
+      Time Elapsed 00:00:01.00
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -937,7 +937,7 @@ events:
       The output was:
       0
       MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-      Build started 02-06-2026 18:10:02.
+      Build started 13-06-2026 16:28:38.
       
       Project "D:\\Chaos_Engine\\build\\CMakeFiles\\4.2.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -966,7 +966,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.54
+      Time Elapsed 00:00:00.63
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1466,8 +1466,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-9qxzdn"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-9qxzdn"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-nwul2l"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-nwul2l"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1476,39 +1476,39 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-9qxzdn'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-nwul2l'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5201c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_09de5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 02-06-2026 18:10:03.
+        Build started 13-06-2026 16:28:39.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxzdn\\cmTC_5201c.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nwul2l\\cmTC_09de5.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxzdn\\Debug\\".
-          Creating directory "cmTC_5201c.dir\\Debug\\cmTC_5201c.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nwul2l\\Debug\\".
+          Creating directory "cmTC_09de5.dir\\Debug\\cmTC_09de5.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_5201c.dir\\Debug\\cmTC_5201c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_5201c.dir\\Debug\\cmTC_5201c.tlog\\unsuccessfulbuild".
+          Creating "cmTC_09de5.dir\\Debug\\cmTC_09de5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_09de5.dir\\Debug\\cmTC_09de5.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_5201c.dir\\Debug\\\\" /Fd"cmTC_5201c.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_09de5.dir\\Debug\\\\" /Fd"cmTC_09de5.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_5201c.dir\\Debug\\\\" /Fd"cmTC_5201c.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_09de5.dir\\Debug\\\\" /Fd"cmTC_09de5.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxzdn\\Debug\\cmTC_5201c.exe" /INCREMENTAL /ILK:"cmTC_5201c.dir\\Debug\\cmTC_5201c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-9qxzdn/Debug/cmTC_5201c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-9qxzdn/Debug/cmTC_5201c.lib" /MACHINE:X64  /machine:x64 cmTC_5201c.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_5201c.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxzdn\\Debug\\cmTC_5201c.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nwul2l\\Debug\\cmTC_09de5.exe" /INCREMENTAL /ILK:"cmTC_09de5.dir\\Debug\\cmTC_09de5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-nwul2l/Debug/cmTC_09de5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-nwul2l/Debug/cmTC_09de5.lib" /MACHINE:X64  /machine:x64 cmTC_09de5.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_09de5.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nwul2l\\Debug\\cmTC_09de5.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_5201c.dir\\Debug\\cmTC_5201c.tlog\\unsuccessfulbuild".
-          Touching "cmTC_5201c.dir\\Debug\\cmTC_5201c.tlog\\cmTC_5201c.lastbuildstate".
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-9qxzdn\\cmTC_5201c.vcxproj" (default targets).
+          Deleting file "cmTC_09de5.dir\\Debug\\cmTC_09de5.tlog\\unsuccessfulbuild".
+          Touching "cmTC_09de5.dir\\Debug\\cmTC_09de5.tlog\\cmTC_09de5.lastbuildstate".
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-nwul2l\\cmTC_09de5.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.48
+        Time Elapsed 00:00:00.69
         
       exitCode: 0
   -
@@ -1548,8 +1548,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-jmje3s"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-jmje3s"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-yoj5ea"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-yoj5ea"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1559,39 +1559,39 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-jmje3s'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-yoj5ea'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d2c96.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2d96d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 02-06-2026 18:10:03.
+        Build started 13-06-2026 16:28:39.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmje3s\\cmTC_d2c96.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yoj5ea\\cmTC_2d96d.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmje3s\\Debug\\".
-          Creating directory "cmTC_d2c96.dir\\Debug\\cmTC_d2c96.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yoj5ea\\Debug\\".
+          Creating directory "cmTC_2d96d.dir\\Debug\\cmTC_2d96d.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_d2c96.dir\\Debug\\cmTC_d2c96.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_d2c96.dir\\Debug\\cmTC_d2c96.tlog\\unsuccessfulbuild".
+          Creating "cmTC_2d96d.dir\\Debug\\cmTC_2d96d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_2d96d.dir\\Debug\\cmTC_2d96d.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_d2c96.dir\\Debug\\\\" /Fd"cmTC_d2c96.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_2d96d.dir\\Debug\\\\" /Fd"cmTC_2d96d.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_d2c96.dir\\Debug\\\\" /Fd"cmTC_d2c96.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /Fo"cmTC_2d96d.dir\\Debug\\\\" /Fd"cmTC_2d96d.dir\\Debug\\vc145.pdb" /external:W1 /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.2\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmje3s\\Debug\\cmTC_d2c96.exe" /INCREMENTAL /ILK:"cmTC_d2c96.dir\\Debug\\cmTC_d2c96.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-jmje3s/Debug/cmTC_d2c96.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-jmje3s/Debug/cmTC_d2c96.lib" /MACHINE:X64  /machine:x64 cmTC_d2c96.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_d2c96.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmje3s\\Debug\\cmTC_d2c96.exe
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yoj5ea\\Debug\\cmTC_2d96d.exe" /INCREMENTAL /ILK:"cmTC_2d96d.dir\\Debug\\cmTC_2d96d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-yoj5ea/Debug/cmTC_2d96d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-yoj5ea/Debug/cmTC_2d96d.lib" /MACHINE:X64  /machine:x64 cmTC_2d96d.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_2d96d.vcxproj -> D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yoj5ea\\Debug\\cmTC_2d96d.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_d2c96.dir\\Debug\\cmTC_d2c96.tlog\\unsuccessfulbuild".
-          Touching "cmTC_d2c96.dir\\Debug\\cmTC_d2c96.tlog\\cmTC_d2c96.lastbuildstate".
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmje3s\\cmTC_d2c96.vcxproj" (default targets).
+          Deleting file "cmTC_2d96d.dir\\Debug\\cmTC_2d96d.tlog\\unsuccessfulbuild".
+          Touching "cmTC_2d96d.dir\\Debug\\cmTC_2d96d.tlog\\cmTC_2d96d.lastbuildstate".
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-yoj5ea\\cmTC_2d96d.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.48
+        Time Elapsed 00:00:00.64
         
       exitCode: 0
   -
@@ -1633,8 +1633,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-j437ji"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-j437ji"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-kw02ht"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-kw02ht"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1644,39 +1644,39 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-j437ji'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-kw02ht'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5c329.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_137e9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 02-06-2026 18:10:04.
+        Build started 13-06-2026 16:28:40.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\cmTC_5c329.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\cmTC_137e9.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\Debug\\".
-          Creating directory "cmTC_5c329.dir\\Debug\\cmTC_5c329.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\Debug\\".
+          Creating directory "cmTC_137e9.dir\\Debug\\cmTC_137e9.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_5c329.dir\\Debug\\cmTC_5c329.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_5c329.dir\\Debug\\cmTC_5c329.tlog\\unsuccessfulbuild".
+          Creating "cmTC_137e9.dir\\Debug\\cmTC_137e9.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_137e9.dir\\Debug\\cmTC_137e9.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_5c329.dir\\Debug\\\\" /Fd"cmTC_5c329.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_137e9.dir\\Debug\\\\" /Fd"cmTC_137e9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_5c329.dir\\Debug\\\\" /Fd"cmTC_5c329.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\src.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_137e9.dir\\Debug\\\\" /Fd"cmTC_137e9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\src.c"
           src.c
-        D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\cmTC_5c329.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\cmTC_5c329.vcxproj" (default targets) -- FAILED.
+        D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\cmTC_137e9.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\cmTC_137e9.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\cmTC_5c329.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\cmTC_137e9.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-j437ji\\cmTC_5c329.vcxproj]
+          D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\src.c(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-kw02ht\\cmTC_137e9.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.29
+        Time Elapsed 00:00:00.69
         
       exitCode: 1
   -
@@ -1689,8 +1689,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ioy9rz"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ioy9rz"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-cunu5b"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-cunu5b"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1700,41 +1700,41 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ioy9rz'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-cunu5b'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_f1bc9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_8b9b0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 02-06-2026 18:10:04.
+        Build started 13-06-2026 16:28:41.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\cmTC_f1bc9.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\cmTC_8b9b0.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\Debug\\".
-          Creating directory "cmTC_f1bc9.dir\\Debug\\cmTC_f1bc9.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\Debug\\".
+          Creating directory "cmTC_8b9b0.dir\\Debug\\cmTC_8b9b0.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_f1bc9.dir\\Debug\\cmTC_f1bc9.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_f1bc9.dir\\Debug\\cmTC_f1bc9.tlog\\unsuccessfulbuild".
+          Creating "cmTC_8b9b0.dir\\Debug\\cmTC_8b9b0.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_8b9b0.dir\\Debug\\cmTC_8b9b0.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f1bc9.dir\\Debug\\\\" /Fd"cmTC_f1bc9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_8b9b0.dir\\Debug\\\\" /Fd"cmTC_8b9b0.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_f1bc9.dir\\Debug\\\\" /Fd"cmTC_f1bc9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_8b9b0.dir\\Debug\\\\" /Fd"cmTC_8b9b0.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\Debug\\cmTC_f1bc9.exe" /INCREMENTAL /ILK:"cmTC_f1bc9.dir\\Debug\\cmTC_f1bc9.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ioy9rz/Debug/cmTC_f1bc9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-ioy9rz/Debug/cmTC_f1bc9.lib" /MACHINE:X64  /machine:x64 cmTC_f1bc9.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\cmTC_f1bc9.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\cmTC_f1bc9.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\Debug\\cmTC_8b9b0.exe" /INCREMENTAL /ILK:"cmTC_8b9b0.dir\\Debug\\cmTC_8b9b0.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-cunu5b/Debug/cmTC_8b9b0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-cunu5b/Debug/cmTC_8b9b0.lib" /MACHINE:X64  /machine:x64 cmTC_8b9b0.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\cmTC_8b9b0.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\cmTC_8b9b0.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\cmTC_f1bc9.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\cmTC_8b9b0.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ioy9rz\\cmTC_f1bc9.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cunu5b\\cmTC_8b9b0.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.36
+        Time Elapsed 00:00:00.51
         
       exitCode: 1
   -
@@ -1747,8 +1747,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-4z5kcw"
-      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-4z5kcw"
+      source: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-qs99pt"
+      binary: "D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-qs99pt"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1758,41 +1758,41 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-4z5kcw'
+        Change Dir: 'D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-qs99pt'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_46ae9.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_640e4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=18.0 /v:n
         MSBuild version 18.3.0-release-26070-10+3972042b7 for .NET Framework
-        Build started 02-06-2026 18:10:05.
+        Build started 13-06-2026 16:28:42.
         
-        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\cmTC_46ae9.vcxproj" on node 1 (default targets).
+        Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\cmTC_640e4.vcxproj" on node 1 (default targets).
         PrepareForBuild:
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\Debug\\".
-          Creating directory "cmTC_46ae9.dir\\Debug\\cmTC_46ae9.tlog\\".
+          Creating directory "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\Debug\\".
+          Creating directory "cmTC_640e4.dir\\Debug\\cmTC_640e4.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_46ae9.dir\\Debug\\cmTC_46ae9.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_46ae9.dir\\Debug\\cmTC_46ae9.tlog\\unsuccessfulbuild".
+          Creating "cmTC_640e4.dir\\Debug\\cmTC_640e4.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_640e4.dir\\Debug\\cmTC_640e4.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_46ae9.dir\\Debug\\\\" /Fd"cmTC_46ae9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_640e4.dir\\Debug\\\\" /Fd"cmTC_640e4.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.50.35725 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_46ae9.dir\\Debug\\\\" /Fd"cmTC_46ae9.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D _MBCS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /Fo"cmTC_640e4.dir\\Debug\\\\" /Fd"cmTC_640e4.dir\\Debug\\vc145.pdb" /external:W1 /TC /errorReport:queue "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\CheckFunctionExists.c"
           CheckFunctionExists.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\Debug\\cmTC_46ae9.exe" /INCREMENTAL /ILK:"cmTC_46ae9.dir\\Debug\\cmTC_46ae9.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-4z5kcw/Debug/cmTC_46ae9.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-4z5kcw/Debug/cmTC_46ae9.lib" /MACHINE:X64  /machine:x64 cmTC_46ae9.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\cmTC_46ae9.vcxproj]
-        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\cmTC_46ae9.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe /OUT:"D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\Debug\\cmTC_640e4.exe" /INCREMENTAL /ILK:"cmTC_640e4.dir\\Debug\\cmTC_640e4.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-qs99pt/Debug/cmTC_640e4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"D:/Chaos_Engine/build/CMakeFiles/CMakeScratch/TryCompile-qs99pt/Debug/cmTC_640e4.lib" /MACHINE:X64  /machine:x64 cmTC_640e4.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\cmTC_640e4.vcxproj]
+        Done Building Project "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\cmTC_640e4.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\cmTC_46ae9.vcxproj" (default target) (1) ->
+        "D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\cmTC_640e4.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4z5kcw\\cmTC_46ae9.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\Chaos_Engine\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qs99pt\\cmTC_640e4.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.36
+        Time Elapsed 00:00:00.49
         
       exitCode: 1
   -

@@ -73,6 +73,9 @@ void Application::Run() {
     static bool sceneHovered = false;   // updated each frame from previous frame's gizmo state
     static bool gizmoInUse  = false;    // previous-frame gizmo state
     static int selectedEntity = -1;
+    static ImGuizmo::OPERATION gizmoOperation =
+    ImGuizmo::TRANSLATE;
+    static ImGuizmo::MODE gizmoMode = ImGuizmo::LOCAL;
     static Texture2D folderIcon(
         "D:/Chaos_Engine/Assets/Editor/folder.png");
 
@@ -135,7 +138,7 @@ void Application::Run() {
         bool leftMouse   = glfwGetMouseButton(g_MainWindow->GetNativeWindow(), GLFW_MOUSE_BUTTON_LEFT)  == GLFW_PRESS;
         bool rightMouse  = glfwGetMouseButton(g_MainWindow->GetNativeWindow(), GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS;
 
-        // WASD only when scene is hovered and ALT is NOT held
+        // WASD camera movement — only when scene is hovered and ALT is NOT held
         if (sceneHovered && !altPressed) {
             float speed = 1.5f * Time::DeltaTime();
             if (Input::IsKeyPressed(Key::W)) targetCamPos.y += speed;
@@ -143,6 +146,17 @@ void Application::Run() {
             if (Input::IsKeyPressed(Key::A)) targetCamPos.x -= speed;
             if (Input::IsKeyPressed(Key::D)) targetCamPos.x += speed;
         }
+
+        // Gizmo operation shortcuts (Q/E/R) — one-shot
+        static bool qPressed = false, ePressed = false, rPressed = false;
+        if (Input::IsKeyPressed(Key::Q)) { if (!qPressed) { gizmoOperation = ImGuizmo::TRANSLATE; qPressed = true; } } else { qPressed = false; }
+        if (Input::IsKeyPressed(Key::E)) { if (!ePressed) { gizmoOperation = ImGuizmo::ROTATE;    ePressed = true; } } else { ePressed = false; }
+        if (Input::IsKeyPressed(Key::R)) { if (!rPressed) { gizmoOperation = ImGuizmo::SCALE;     rPressed = true; } } else { rPressed = false; }
+
+        // Gizmo mode shortcuts (L/T)
+        static bool lPressed = false, tPressed = false;
+        if (Input::IsKeyPressed(Key::L)) { if (!lPressed) { gizmoMode = ImGuizmo::LOCAL; lPressed = true; } } else { lPressed = false; }
+        if (Input::IsKeyPressed(Key::T)) { if (!tPressed) { gizmoMode = ImGuizmo::WORLD; tPressed = true; } } else { tPressed = false; }
         Scene* activeScene =  m_IsPlaying
             ? m_RuntimeScene
             : m_Scene;
@@ -227,6 +241,49 @@ void Application::Run() {
             ImGui::GetMousePos();
         ImGuiID dockspace_id = ImGui::GetID("MainDockSpace");
         ImGui::DockSpaceOverViewport(dockspace_id, ImGui::GetMainViewport());
+
+
+        ImGui::Begin("Toolbar");
+
+        // --- Move / Rotate / Scale buttons with active highlighting ---
+        ImVec4 activeColor(0.2f, 0.5f, 1.0f, 1.0f);
+
+        bool moveActive = (gizmoOperation == ImGuizmo::TRANSLATE);
+        if (moveActive) ImGui::PushStyleColor(ImGuiCol_Button, activeColor);
+        if (ImGui::Button("Move")) gizmoOperation = ImGuizmo::TRANSLATE;
+        if (moveActive) ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        bool rotateActive = (gizmoOperation == ImGuizmo::ROTATE);
+        if (rotateActive) ImGui::PushStyleColor(ImGuiCol_Button, activeColor);
+        if (ImGui::Button("Rotate")) gizmoOperation = ImGuizmo::ROTATE;
+        if (rotateActive) ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        bool scaleActive = (gizmoOperation == ImGuizmo::SCALE);
+        if (scaleActive) ImGui::PushStyleColor(ImGuiCol_Button, activeColor);
+        if (ImGui::Button("Scale")) gizmoOperation = ImGuizmo::SCALE;
+        if (scaleActive) ImGui::PopStyleColor();
+
+        ImGui::Separator();
+
+        // --- Local / World mode buttons ---
+        bool localActive = (gizmoMode == ImGuizmo::LOCAL);
+        if (localActive) ImGui::PushStyleColor(ImGuiCol_Button, activeColor);
+        if (ImGui::Button("Local")) gizmoMode = ImGuizmo::LOCAL;
+        if (localActive) ImGui::PopStyleColor();
+
+        ImGui::SameLine();
+
+        bool worldActive = (gizmoMode == ImGuizmo::WORLD);
+        if (worldActive) ImGui::PushStyleColor(ImGuiCol_Button, activeColor);
+        if (ImGui::Button("World")) gizmoMode = ImGuizmo::WORLD;
+        if (worldActive) ImGui::PopStyleColor();
+
+        ImGui::End();
+        
         
         ImGui::Begin("Scene");
         ImVec2 size = ImGui::GetContentRegionAvail();
@@ -332,11 +389,14 @@ void Application::Run() {
 
             bool wasUsing = gizmoInUse;
 
+            // Save a copy before manipulation
+            glm::mat4 originalMatrix = transformMatrix;
+
             ImGuizmo::Manipulate(
                 glm::value_ptr(view),
                 glm::value_ptr(projection),
-                ImGuizmo::TRANSLATE,
-                ImGuizmo::LOCAL,
+                gizmoOperation,
+                gizmoMode,
                 glm::value_ptr(transformMatrix)
             );
 
@@ -344,17 +404,35 @@ void Application::Run() {
 
             if (isUsing)
             {
-                glm::vec3 translation, rotation, scale;
-                ImGuizmo::DecomposeMatrixToComponents(
-                    glm::value_ptr(transformMatrix),
-                    &translation.x, &rotation.x, &scale.x
-                );
-
                 // Capture start position on first frame of drag
                 if (!wasUsing)
                     oldPosition = transform.Position;
 
-                transform.Position = translation;
+                if (gizmoOperation == ImGuizmo::TRANSLATE)
+                {
+                    // Extract translation from the manipulated matrix
+                    transform.Position = glm::vec3(transformMatrix[3]);
+                }
+                else if (gizmoOperation == ImGuizmo::ROTATE)
+                {
+                    // Compute the delta rotation the gizmo applied
+                    // deltaMatrix = manipulated * inverse(original)
+                    glm::mat4 deltaMatrix = transformMatrix * glm::inverse(originalMatrix);
+                    // Extract the Z rotation angle from the delta
+                    float deltaAngle = atan2(deltaMatrix[0][1], deltaMatrix[0][0]);
+                    transform.Rotation += deltaAngle;
+                }
+                else if (gizmoOperation == ImGuizmo::SCALE)
+                {
+                    // Compute scale ratio: new column lengths / old column lengths
+                    float oldScaleX = glm::length(glm::vec3(originalMatrix[0]));
+                    float oldScaleY = glm::length(glm::vec3(originalMatrix[1]));
+                    float newScaleX = glm::length(glm::vec3(transformMatrix[0]));
+                    float newScaleY = glm::length(glm::vec3(transformMatrix[1]));
+
+                    if (oldScaleX > 0.0001f) transform.Scale.x *= (newScaleX / oldScaleX);
+                    if (oldScaleY > 0.0001f) transform.Scale.y *= (newScaleY / oldScaleY);
+                }
             }
             else if (wasUsing)
             {
@@ -548,7 +626,8 @@ void Application::Run() {
             glm::mat4 transformMatrix = transform.GetMatrix();
             ImGui::Text("Transform");
             ImGui::DragFloat2("Position", &transform.Position.x, 0.01f);
-            ImGui::DragFloat("Rotation", &transform.Rotation, 0.01f);
+            ImGui::DragFloat("Rotation",  &transform.Rotation, 0.01f);
+            ImGui::DragFloat2("Scale",    &transform.Scale.x, 0.01f);
 
             
             auto& texture =
@@ -584,6 +663,14 @@ void Application::Run() {
                 );
                 selectedEntity = -1;
             }
+            
+        }
+        if (ImGui::Button("Save Prefab"))
+        {
+            activeScene->SavePrefab(
+                selectedEntity,
+                "D:/Chaos_Engine/Assets/Prefabs/Test.prefab"
+            );
         }
 
         ImGui::End();
@@ -704,6 +791,12 @@ void Application::Run() {
             -1.6f * zoom, 1.6f * zoom,
             -0.9f * zoom, 0.9f * zoom
         );
+        if (ImGui::Button("Load Prefab"))
+        {
+            activeScene->LoadPrefab(
+                "D:/Chaos_Engine/Assets/Prefabs/Test.prefab"
+            );
+        }
 
         // Wireframe
         static bool wireframe = false;
