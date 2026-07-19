@@ -26,6 +26,8 @@
 #include <filesystem>
 #include "Renderer/Texture2D.h"
 #include "Tilemap/TileRenderer.h"
+#include "Tilemap/TileBrush.h"
+#include "Tilemap/TextureCache.h"
 
 
 Window* g_MainWindow = nullptr;
@@ -496,22 +498,52 @@ void Application::Run() {
         glViewport(0, 0, ww, wh);
 
         // --------------------
-        // CLICK SELECT
+        // CLICK SELECT / TILE PAINT
         // --------------------
         if (ImGui::IsItemHovered() && ImGui::IsMouseClicked(0) && !altPressed && !gizmoInUse)
         {
             ImVec2 mouse  = ImGui::GetMousePos();
             ImVec2 origin = ImGui::GetItemRectMin();
 
-            int px = (int)(mouse.x - origin.x);
-            int py = (int)(size.y  - (mouse.y - origin.y));
-
-            int id = Renderer::ReadEntityID(px, py);
-            if (id >= 0)
+            if (TileBrush::Active)
             {
-                selectedEntity = id;
-                Renderer::SetSelectedEntity(id);
-                oldPosition = activeScene->GetTransform(id).Position; // reset undo baseline
+                // --- TILE PAINTING ---
+                // Convert screen position to NDC
+                float ndcX = ((mouse.x - origin.x) / size.x) * 2.0f - 1.0f;
+                float ndcY = 1.0f - ((mouse.y - origin.y) / size.y) * 2.0f;
+
+                // NDC to world via inverse VP
+                Camera* paintCam = Renderer::GetCamera();
+                glm::mat4 invVP = glm::inverse(paintCam->GetViewProjection());
+                glm::vec4 worldPos = invVP * glm::vec4(ndcX, ndcY, 0.0f, 1.0f);
+
+                // World position to tile grid (tiles are 1x1 centered)
+                int tileX = (int)floorf(worldPos.x + 0.5f);
+                int tileY = (int)floorf(worldPos.y + 0.5f);
+
+                Tilemap& tilemap = activeScene->GetTilemap();
+                if (tileX >= 0 && tileX < tilemap.GetWidth() &&
+                    tileY >= 0 && tileY < tilemap.GetHeight())
+                {
+                    Tile tile;
+                    tile.ID          = TileBrush::TileID;
+                    tile.TexturePath = TileBrush::TexturePath;
+                    tilemap.SetTile(tileX, tileY, tile);
+                }
+            }
+            else
+            {
+                // --- ENTITY PICKING ---
+                int px = (int)(mouse.x - origin.x);
+                int py = (int)(size.y  - (mouse.y - origin.y));
+
+                int id = Renderer::ReadEntityID(px, py);
+                if (id >= 0)
+                {
+                    selectedEntity = id;
+                    Renderer::SetSelectedEntity(id);
+                    oldPosition = activeScene->GetTransform(id).Position;
+                }
             }
         }
 
@@ -745,7 +777,15 @@ void Application::Run() {
 
                 ImGui::SameLine();
 
-                ImGui::Selectable(name.c_str());
+                if (ImGui::Selectable(name.c_str()))
+                {
+                    // Clicking a texture sets it as the tile brush
+                    if (isTexture)
+                    {
+                        std::string pathStr = entry.path().string();
+                        TileBrush::Set(pathStr, name);
+                    }
+                }
 
                 if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
                 {
@@ -776,6 +816,35 @@ void Application::Run() {
         }
         } catch (const std::filesystem::filesystem_error&) {
             ImGui::Text("Error reading directory");
+        }
+
+        ImGui::End();
+
+        // --------------------
+        // TILE BRUSH PANEL
+        // --------------------
+        ImGui::Begin("Tile Brush");
+
+        if (TileBrush::Active)
+        {
+            ImGui::Text("Brush: %s", TileBrush::DisplayName.c_str());
+
+            // Show preview of the brush texture
+            unsigned int previewID = TextureCache::Get(TileBrush::TexturePath);
+            if (previewID != 0)
+                ImGui::Image((void*)(intptr_t)previewID, ImVec2(64, 64));
+
+            ImGui::Text("Tile ID: %d", TileBrush::TileID);
+
+            if (ImGui::Button("Clear Brush"))
+                TileBrush::Clear();
+
+            ImGui::Separator();
+            ImGui::TextWrapped("Left-click the Scene to paint tiles.");
+        }
+        else
+        {
+            ImGui::TextWrapped("No brush selected.\nClick a .png in Assets to set a brush.");
         }
 
         ImGui::End();

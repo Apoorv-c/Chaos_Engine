@@ -35,6 +35,8 @@ add_executable(Chaos_Engine
     src/Renderer/Texture2D.cpp
     src/Tilemap/Tilemap.cpp
     src/Tilemap/TileRenderer.cpp
+    src/Tilemap/TextureCache.cpp
+    src/Tilemap/TileBrush.cpp
 
 
 )

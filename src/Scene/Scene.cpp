@@ -20,6 +20,7 @@ Scene::Scene() {
     Tile grass;
 
     grass.ID = 1;
+    grass.TexturePath = "D:/Chaos_Engine/Assets/Textures/grass.png";
 
     m_Tilemap.SetTile(0, 0, grass);
     m_Tilemap.SetTile(1, 0, grass);
@@ -27,7 +28,6 @@ Scene::Scene() {
     m_Tilemap.SetTile(0, 1, grass);
     m_Tilemap.SetTile(1, 1, grass);
     m_Tilemap.SetTile(2, 1, grass);
-    
 }
 
 void Scene::Clear() {

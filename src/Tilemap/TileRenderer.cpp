@@ -4,6 +4,7 @@
 
 #include "Scene/Scene.h"
 #include "Renderer/Renderer.h"
+#include "Tilemap/TextureCache.h"
 
 void TileRenderer::Render(Scene& scene)
 {
@@ -28,15 +29,13 @@ void TileRenderer::Render(Scene& scene)
                     )
                 );
 
-            // Choose color based on tile ID
-            glm::vec4 color;
-            switch (tile.ID)
-            {
-                case 1:  color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f); break; // white
-                default: color = glm::vec4(0.5f, 0.5f, 0.5f, 1.0f); break; // grey fallback
-            }
+            // Scale down slightly so tiles have a thin visible gap
+            transform = glm::scale(transform, glm::vec3(0.98f, 0.98f, 1.0f));
 
-            Renderer::DrawColoredQuad(transform, color);
+            // Tile.TexturePath → TextureCache → OpenGL ID → DrawQuad
+            unsigned int texID = TextureCache::Get(tile.TexturePath);
+
+            Renderer::DrawQuad(transform, texID);
         }
     }
-}
+}
