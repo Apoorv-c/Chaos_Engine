@@ -14,6 +14,7 @@
 static unsigned int VAO = 0;
 static Shader* s_Shader = nullptr;
 static Shader* s_PickingShader = nullptr;  // writes integer entity ID
+static Shader* s_ColorShader = nullptr;    // flat-color (no texture)
 static Camera* s_Camera = nullptr;
 static unsigned int s_FBO = 0;
 static unsigned int s_ColorTexture = 0;
@@ -161,6 +162,26 @@ void Renderer::Init() {
     s_PickingShader = new Shader(pickVS, pickFS);
 
     s_Camera = new Camera(-1.6f, 1.6f, -0.9f, 0.9f);
+
+    // Flat-color shader (no texture sampling)
+    const char* colorVS = R"(
+        #version 330 core
+        layout(location = 0) in vec2 aPos;
+        uniform mat4 u_ViewProjection;
+        uniform mat4 u_Transform;
+        void main() {
+            gl_Position = u_ViewProjection * u_Transform * vec4(aPos, 0.0, 1.0);
+        }
+    )";
+    const char* colorFS = R"(
+        #version 330 core
+        out vec4 color;
+        uniform vec4 u_Color;
+        void main() {
+            color = u_Color;
+        }
+    )";
+    s_ColorShader = new Shader(colorVS, colorFS);
 
     // --------------------
     // Unity-like grid (light grey)
@@ -316,7 +337,7 @@ void Renderer::PrepareShader() {
     s_Shader->Bind();
     s_Shader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
 }
-void Renderer::DrawTriangle(
+void Renderer::DrawQuad(
     const glm::mat4& transform,
     unsigned int textureID)
 {
@@ -336,6 +357,19 @@ void Renderer::DrawTriangle(
         textureID
     );
 
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
+void Renderer::DrawColoredQuad(
+    const glm::mat4& transform,
+    const glm::vec4& color)
+{
+    s_ColorShader->Bind();
+    s_ColorShader->SetMat4("u_ViewProjection", s_Camera->GetViewProjection());
+    s_ColorShader->SetMat4("u_Transform", transform);
+    s_ColorShader->SetFloat4("u_Color", color);
+
+    glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 Camera* Renderer::GetCamera() {

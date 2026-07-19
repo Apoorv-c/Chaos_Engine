@@ -79,6 +79,12 @@
     <ClCompile Include="D:\Chaos_Engine\src\Renderer\Texture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Tilemap\Tilemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Chaos_Engine\src\Tilemap\TileRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="D:\Chaos_Engine\CMakeLists.txt" />

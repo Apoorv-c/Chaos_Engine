@@ -33,7 +33,8 @@ add_executable(Chaos_Engine
     src/Commands/SpawnCommand.cpp
     src/Commands/DestroyCommand.cpp
     src/Renderer/Texture2D.cpp
-
+    src/Tilemap/Tilemap.cpp
+    src/Tilemap/TileRenderer.cpp
 
 
 )

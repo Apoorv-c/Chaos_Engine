@@ -25,6 +25,7 @@
 #include <memory>
 #include <filesystem>
 #include "Renderer/Texture2D.h"
+#include "Tilemap/TileRenderer.h"
 
 
 Window* g_MainWindow = nullptr;
@@ -302,10 +303,11 @@ void Application::Run() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         Renderer::PrepareShader();
+        Renderer::UpdateGrid(zoom);
         Renderer::DrawGrid();
         // Grid uses its own shader; restore the entity shader before drawing entities.
         Renderer::PrepareShader();
-        SystemManager::Render(*activeScene);
+        TileRenderer::Render(*activeScene);
 
         Renderer::UnbindFramebuffer();
 
@@ -322,16 +324,22 @@ void Application::Run() {
         // Drop target on the scene viewport image
         if (ImGui::BeginDragDropTarget())
         {
+            // Handle PREFAB drops — spawn the prefab into the scene
+            if (const ImGuiPayload* payload =
+                ImGui::AcceptDragDropPayload("PREFAB_ITEM"))
+            {
+                const char* prefabPath = (const char*)payload->Data;
+                activeScene->LoadPrefab(prefabPath);
+            }
+
+            // Handle TEXTURE drops — assign to selected entity
             if (const ImGuiPayload* payload =
                 ImGui::AcceptDragDropPayload("ASSET_PATH"))
             {
-                const char* droppedPath =
-                    (const char*)payload->Data;
-
+                const char* droppedPath = (const char*)payload->Data;
                 if (selectedEntity >= 0)
                 {
-                    activeScene->GetTexture(selectedEntity).Path =
-                        droppedPath;
+                    activeScene->GetTexture(selectedEntity).Path = droppedPath;
                 }
             }
 
@@ -664,13 +672,13 @@ void Application::Run() {
                 selectedEntity = -1;
             }
             
-        }
-        if (ImGui::Button("Save Prefab"))
-        {
-            activeScene->SavePrefab(
-                selectedEntity,
-                "D:/Chaos_Engine/Assets/Prefabs/Test.prefab"
-            );
+            if (ImGui::Button("Save Prefab"))
+            {
+                activeScene->SavePrefab(
+                    selectedEntity,
+                    "D:/Chaos_Engine/Assets/Prefabs/Test.prefab"
+                );
+            }
         }
 
         ImGui::End();
@@ -689,7 +697,7 @@ void Application::Run() {
             currentDirectory =
                 currentDirectory.parent_path();
         }
-    }
+        }
         try {
         for (const auto& entry :
             std::filesystem::directory_iterator(currentDirectory))
@@ -722,6 +730,14 @@ void Application::Run() {
                 {
                     icon = &imageIcon;
                 }
+                bool isTexture =
+                    entry.path().extension() == ".png";
+
+                bool isScene =
+                    entry.path().extension() == ".scene";
+
+                bool isPrefab =
+                    entry.path().extension() == ".prefab";
 
                 ImGui::Image(
                     (void*)(intptr_t)icon->GetID(),
@@ -733,17 +749,27 @@ void Application::Run() {
 
                 if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_SourceAllowNullID))
                 {
-                    std::string pathStr =
-                        entry.path().string();
+                    std::string pathStr = entry.path().string();
 
-                    ImGui::SetDragDropPayload(
-                        "ASSET_PATH",
-                        pathStr.c_str(),
-                        pathStr.size() + 1
-                    );
+                    // Use a SINGLE payload type based on file extension
+                    if (isPrefab)
+                    {
+                        ImGui::SetDragDropPayload(
+                            "PREFAB_ITEM",
+                            pathStr.c_str(),
+                            pathStr.size() + 1
+                        );
+                    }
+                    else
+                    {
+                        ImGui::SetDragDropPayload(
+                            "ASSET_PATH",
+                            pathStr.c_str(),
+                            pathStr.size() + 1
+                        );
+                    }
 
                     ImGui::Text("%s", name.c_str());
-
                     ImGui::EndDragDropSource();
                 }
             }

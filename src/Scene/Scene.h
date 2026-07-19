@@ -5,6 +5,7 @@
 #include "Scene/Components.h"
 #include "Systems/RenderSystem.h"
 #include "Systems/TransformSystem.h"
+#include "Tilemap/Tilemap.h"
 #include <vector>
 #include <queue>
 #include <string>
@@ -37,6 +38,12 @@ public:
     void LoadPrefab(
         const std::string& path
     );
+    Tilemap m_Tilemap{64, 64};
+
+    Tilemap& GetTilemap()
+    {
+        return m_Tilemap;
+    }
 private:
     std::vector<Entity> m_Entities;
     std::vector<TransformComponent> m_Transforms;

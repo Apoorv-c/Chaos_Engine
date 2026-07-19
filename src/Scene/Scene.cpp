@@ -16,6 +16,18 @@ Scene::Scene() {
 
     GetTransform(left).Position = {-0.7f, 0.0f, 0.0f};
     GetTransform(right).Position = {0.7f, 0.0f, 0.0f};
+
+    Tile grass;
+
+    grass.ID = 1;
+
+    m_Tilemap.SetTile(0, 0, grass);
+    m_Tilemap.SetTile(1, 0, grass);
+    m_Tilemap.SetTile(2, 0, grass);
+    m_Tilemap.SetTile(0, 1, grass);
+    m_Tilemap.SetTile(1, 1, grass);
+    m_Tilemap.SetTile(2, 1, grass);
+    
 }
 
 void Scene::Clear() {
@@ -201,16 +213,10 @@ void Scene::LoadPrefab(
 
     std::getline(in, texturePath);
 
-    Entity entity =
-        SpawnEntity(pos);
+    Entity entity = SpawnEntity(pos);
 
-    int index =
-        (int)m_Entities.size() - 1;
-    m_Transforms[index]
-        .Rotation = rotation;
-
-    m_Textures[index]
-        .Path = texturePath;
+    m_Transforms[entity].Rotation = rotation;
+    m_Textures[entity].Path = texturePath;
 
     in.close();
 }

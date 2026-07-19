@@ -36,7 +36,7 @@ void RenderSystem::Render(
             textureID =
                 textureCache[texture.Path]->GetID();
         }
-        Renderer::DrawTriangle(
+        Renderer::DrawQuad(
             transforms[i].GetMatrix(),
             textureID
         );
